@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>kakao 지도 시작하기</title>
+</head>
+<body>
+1. 지도 생성하기
+
+지도를 표시할 영역 만들기
+
+<div id="map" style="width: 700px; height: 700px;"></div>
+
+지도 API 호출
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f94caa3f14bb97c5a461377e09303edb"></script>
+
+
+
+<script>
+
+	var container = document.getElementById('map');
+
+	var option = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+	};
+	
+	var map = new kakao.maps.Map(container, option)
+	
+	
+	
+</script>
+
+</body>
+</html>

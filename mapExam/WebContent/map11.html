@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>드래그 가능한 마커 생성하기</title>
+</head>
+<body>
+
+<div id="map" style="width: 700px; height: 700px;"></div>d
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f94caa3f14bb97c5a461377e09303edb"></script>
+
+<script>
+
+	var mapCotainer = document.getElementById('map'),
+		mapOption = {
+			center:  new kakao.maps.LatLng(37.396, 127.1105),
+			level: 3
+	};
+	
+	var map = new kakao.maps.Map(mapCotainer, mapOption);
+	
+	// 일단 기본 마커 표시 위치
+	var markerPosition = new kakao.maps.LatLng(37.396, 127.1105);
+	
+	// 기본 마커 객체 생성
+	var marker = new kakao.maps.Marker({
+		position: markerPosition
+	});
+	
+	// 기본 마커 지도에 올리기
+	marker.setMap(map);
+	
+	// 마커를 움직일 수 있도록 설정
+	marker.setDraggable(true);
+	
+	
+	
+	
+
+	
+</script>
+</body>
+</html>

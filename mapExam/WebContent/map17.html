@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>여러개 마커 제어하기</title>
+</head>
+<body>
+
+<div id="map" style="width: 700px; height: 700px;"></div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f94caa3f14bb97c5a461377e09303edb"></script>
+
+<script>
+
+	var mapCotainer = document.getElementById('map'),
+		mapOption = {
+			center:  new kakao.maps.LatLng(37.396, 127.1105),
+			level: 15
+	};
+	
+	var map = new kakao.maps.Map(mapCotainer, mapOption);
+	
+	var positions = [
+		{
+			title : '카카오',
+			latlng : new kakao.maps.LatLng(37.396, 127.1105),
+		},
+		{
+			title : '장소1',
+			latlng : new kakao.maps.LatLng(33.450701, 126.570667),
+		}
+		
+	];
+	
+	for (var i = 0; i < positions.length; i++) {
+		
+		
+		var marker = new kakao.maps.Marker({
+			map:map,
+			position: positions[i].latlng,
+			title: positions[i].title
+	});
+		
+		
+	}
+	
+
+	
+	
+</script>
+</body>
+</html>

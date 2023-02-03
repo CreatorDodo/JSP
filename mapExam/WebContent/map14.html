@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>마커와 윈도우 정보창 함께 표시</title>
+</head>
+<body>
+
+<div id="map" style="width: 700px; height: 700px;"></div>d
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f94caa3f14bb97c5a461377e09303edb"></script>
+
+<script>
+
+	var mapCotainer = document.getElementById('map'),
+		mapOption = {
+			center:  new kakao.maps.LatLng(37.396, 127.1105),
+			level: 3
+	};
+	
+	var map = new kakao.maps.Map(mapCotainer, mapOption);
+	
+	// 마커 올리기
+	// 마커 위치 설정
+	var markerPosition = new kakao.maps.LatLng(37.396, 127.1105);
+	
+	// 마커 객체 생성
+	var marker = new kakao.maps.Marker({
+		position: markerPosition
+	});
+	
+	// 마커 지도에 올리기
+	marker.setMap(map);
+	
+	
+	// 창에 나타낼 정보 작성
+	var iwContent = '<h3>환영합니다.</h3>',
+		iwPosition = new kakao.maps.LatLng(37.396, 127.1105);
+	
+	// 창 생성
+	var infowindow = new kakao.maps.InfoWindow({
+		position : iwPosition,
+		content : iwContent
+		
+	})
+	
+	// 정보창 지도에 올리기
+	infowindow.open(map, marker);	//marker를 넣을 때와 뺄 때의 차이 보기
+// 	infowindow.open(map); // marker 옵션을 제거하면 마커 앞에 찍히게 되어 
+   						 // 마커와 함께 정보창을 사용할때는 marker 옵션을 넣자
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>여러개 마커 제어하기</title>
+</head>
+<body>
+
+<div id="map" style="width: 700px; height: 700px;"></div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f94caa3f14bb97c5a461377e09303edb"></script>
+
+<script>
+
+	var mapCotainer = document.getElementById('map'),
+		mapOption = {
+			center:  new kakao.maps.LatLng(37.396, 127.1105),
+			level: 3
+	};
+	
+	var map = new kakao.maps.Map(mapCotainer, mapOption);
+	
+	kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+		//클릭한 그 위치에 마커 표시
+		addMarker(mouseEvent.latLng);
+		
+	});
+	
+	
+	//마우스 클릭으로 생성된 마커들을 담을 배열
+	var markers = [];
+	
+	addMarker(new kakao.maps.LatLng(37.396, 127.1105));
+	
+	//마커 생성 함수
+	function addMarker(position) {
+		var marker = new kakao.maps.Marker({
+			position: position
+			
+			
+		});
+		
+		//클릭한 마커를 지도에 올리기
+		marker.setMap(map);
+		
+		//그 마커를 배열에 저장
+		markers.push(marker);
+		
+		
+	}
+	
+	
+	
+
+	
+	
+</script>
+</body>
+</html>
