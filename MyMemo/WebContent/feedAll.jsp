@@ -132,10 +132,11 @@
   
 
     
-    <% ArrayList<feedDTO> feeds = feedDAO.getAllList(); 
-    
-    for(feedDTO feed : feeds) {
-    %>
+    <%
+          	ArrayList<feedDTO> feeds = feedDAO.getAllList(); 
+                        
+                        for(feedDTO feed : feeds) {
+          %>
     
    <tr>
     <td scope="col"><%=feed.getNo() %></td>
