@@ -3,7 +3,7 @@ package jdbc;
 
 public class userDTO {
 	
-	private String id, password, name, ts;
+	private String id, password, name, ts, email, gender;
 
 	public String getId() {
 		return id;
@@ -37,16 +37,35 @@ public class userDTO {
 		this.ts = ts;
 	}
 
-	public userDTO(String id, String password, String name, String ts) {
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public userDTO(String id, String password, String name, String ts, String email, String gender) {
 		super();
 		this.id = id;
 		this.password = password;
 		this.name = name;
 		this.ts = ts;
+		this.email = email;
+		this.gender = gender;
 	}
 
 	public userDTO() {
 		super();
 	}
+
 	
 }
