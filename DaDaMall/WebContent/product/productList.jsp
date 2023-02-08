@@ -10,7 +10,8 @@
 <title>상품리스트</title>
 
 </head>
-  <body class="text-center bg-warning">
+  <body class="text-center">
+   
   <%@ include file="/includes/header.jsp"%>
   
 <!--     container 화면 전체를 차지 하지 않는 고정 크기 컨테이너,
@@ -24,6 +25,24 @@
   
   w 전체 너비  -->
   
+  
+  
+  <header class="bgimg w3-display-container w3-grayscale-min" style="height: 80%" id="home">
+ <img src="../images/스포츠이미지.jpg"  width="100%" height="90%"> 
+  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+  </div>
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white text-light" style="font-size:90px">DaDaMall</span>
+  </div>
+  <div class="w3-display-bottomright w3-center w3-padding-large">
+  </div>
+</header>
+  <div class="w3-container" id="menu">
+  <div class="w3-content" style="max-width:700px">
+ 
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">상품 목록</span></h5>
+  </div>
+  </div>
 <%
 	sid = (String) session.getAttribute("id");
  	if( sid == null) {%>
@@ -53,51 +72,7 @@
 	session.setAttribute("id", sid);
 }
 %>
-<main>
-  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-<img src="../images/겨울스포츠광고.png"  width="100%" height="100%"> 
-        <div class="container">
-          <div class="carousel-caption text-start">
-                <p><a class="btn btn-lg btn-success" href="#">할인특가!</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-      <img src="images/adidas.png"  width="100%" height="100%"> 
-              <div class="container">
-          <div class="carousel-caption text-warning">
-            <h1>ADIDAS EVENT</h1>
-            <p><a class="btn btn-lg btn-primary" href="#">더보기</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-       <img src="images/턱걸이밴드.png"  width="100%" height="100%"> 
-        <div class="container">
-          <div class="carousel-caption text-end">
-            <h1>행사상품</h1><p><a class="btn btn-lg btn-primary" href="#">더보기</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-    </div>
 
-</main>
      <%@ include file="/includes/footer.jsp"%>
   </body>
 </html>

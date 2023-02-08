@@ -18,21 +18,25 @@ public class purchasedDAO {
 	private static PreparedStatement pstmt;
 	private static String sql;
 	private static ResultSet rs;
-	productDTO fdto;
+	purchasedDTO purdto;
 	private static Connection conn;
 	
-	public static boolean insert(String id, String content) throws SQLException, NamingException {
+	public static boolean insert(String pid, String id, String name, String pquantity, String email, String address) throws SQLException, NamingException {
 			
 			try {
-				sql = " INSERT INTO feed (id, content) "
-						+ " VALUES(?, ?) ";
+				sql = " INSERT INTO purchased (pid, id, name, pquantity, email, address) "
+						+ " VALUES(?, ?, ?, ?, ?, ?) ";
 	
 				conn = ConnectionPool.get();
 				
 				pstmt = conn.prepareStatement(sql);
 	
-				pstmt.setString(1, id);
-				pstmt.setString(2, content);
+				pstmt.setString(1, pid);
+				pstmt.setString(2, id);
+				pstmt.setString(3, name);
+				pstmt.setString(4, pquantity);
+				pstmt.setString(5, email);
+				pstmt.setString(6, address);
 	
 				int result = pstmt.executeUpdate();
 				if (result == 1) {
@@ -50,13 +54,12 @@ public class purchasedDAO {
 			return false;
 		}
 		
-	//전체 메모 보기
-	public static ArrayList<productDTO> getAllList() throws SQLException, NamingException{
+	public static ArrayList<purchasedDTO> getAllList() throws SQLException, NamingException{
 			
-		ArrayList<productDTO> feeds = new ArrayList<productDTO>();
+		ArrayList<purchasedDTO> purchaseds = new ArrayList<purchasedDTO>();
 		
 		try {
-			sql = " SELECT * FROM feed ORDER BY ts DESC ";
+			sql = " SELECT * FROM purchased ORDER BY purno DESC ";
 	
 			conn = ConnectionPool.get();
 			
@@ -67,13 +70,16 @@ public class purchasedDAO {
 			
 			
 			while(rs.next()) {		
-				feeds.add(new productDTO(rs.getString(1),
+				purchaseds.add(new purchasedDTO(rs.getString(1),
 									rs.getString(2),
 									rs.getString(3),
-									rs.getString(4)));
+									rs.getString(4),
+									rs.getString(5),
+									rs.getString(6),
+									rs.getString(7)));
 			}
 	
-				return feeds;
+				return purchaseds;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -84,37 +90,37 @@ public class purchasedDAO {
 			conn.close();
 		}
 	
-		return feeds;
+		return purchaseds;
 	
 		}
 	
+	public static purchasedDTO getOneList(String purno) throws SQLException, NamingException{
 		
-	//회원 자신의 메모만 보기
-	public static ArrayList<productDTO> getOneList(String id) throws SQLException, NamingException{
-		
-		ArrayList<productDTO> feeds = new ArrayList<productDTO>();
+		purchasedDTO purchased = new purchasedDTO();
 		
 		try {
-			sql = " SELECT * FROM feed where id=? ORDER BY ts DESC ";
+			sql = " SELECT * FROM purchased where purno=? ";
 	
 			conn = ConnectionPool.get();
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, id);
+			pstmt.setString(1, purno);
 	
 			rs = pstmt.executeQuery();
 			
-			
-			
-			while(rs.next()) {		
-				feeds.add(new productDTO(rs.getString(1),
-									rs.getString(2),
-									rs.getString(3),
-									rs.getString(4)));
+			if (rs.next()) {
+				purchased.setPurno((rs.getString("purno")));
+				purchased.setPid((rs.getString("pid")));
+				purchased.setId((rs.getString("id")));
+				purchased.setName((rs.getString("name")));
+				purchased.setPquantity((rs.getString("pquantity")));
+				purchased.setEmail((rs.getString("email")));
+				purchased.setAddress((rs.getString("address")));
 			}
-	
-				return feeds;
+			
+			return purchased;
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -125,38 +131,29 @@ public class purchasedDAO {
 			conn.close();
 		}
 	
-		return feeds;
+		return purchased;
 	
 		}
 	
-	//AJAX로 모든 리스트 출력 매서드
-	public static String getListAJAX() throws SQLException, NamingException{
-		
-		JSONArray feeds = new JSONArray();
+	public static boolean update(purchasedDTO purdto) throws NamingException, SQLException {
 		
 		try {
-			sql = " SELECT * FROM feed ORDER BY ts DESC ";
-	
+			
+			sql = "UPDATE purchased SET pquantity=?, address=? "
+					+ " WHERE purno=? ";
+
 			conn = ConnectionPool.get();
 			
 			pstmt = conn.prepareStatement(sql);
-	
-			rs = pstmt.executeQuery();
-			
-			
-			
-			while(rs.next()) {		
-				JSONObject obj = new JSONObject();
-				obj.put("no", rs.getString(1));
-				obj.put("id", rs.getString(2));
-				obj.put("content", rs.getString(3));
-				obj.put("ts", rs.getString(4));
-				
-				feeds.add(obj);
+
+			pstmt.setString(1, purdto.getPquantity());
+			pstmt.setString(2, purdto.getAddress());
+			pstmt.setString(3, purdto.getPurno());
+
+			int result = pstmt.executeUpdate();
+			if (result == 1) {
+				return true;
 			}
-	
-				return feeds.toJSONString();
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -165,9 +162,38 @@ public class purchasedDAO {
 			if(conn != null)
 			conn.close();
 		}
+
+		return false;
+
+	}
 	
-		return feeds.toJSONString();
+	public static boolean delete(String purno) throws NamingException, SQLException {
 	
+	try {
+		
+		sql = "DELETE purchased where purno=? ";
+
+		conn = ConnectionPool.get();
+		
+		pstmt = conn.prepareStatement(sql);
+
+		pstmt.setString(1, purno);
+
+		int result = pstmt.executeUpdate();
+		if (result == 1) {
+			return true;
 		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		if(pstmt != null)
+		pstmt.close();
+		if(conn != null)
+		conn.close();
+	}
+
+	return false;
+
+}
 
 }

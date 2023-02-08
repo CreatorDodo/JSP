@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<div class="container">
-  <footer class="bg-primary fixed-bottom d-flex flex-wrap justify-content-between align-items-center py-3">
-    <div class="col-md-4 d-flex align-items-center"> 
-      <a href="main.jsp" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-        　 <img class="box" style="width: 25px; height: 25px;" src="/DaDaMall/images/DA.png"> 
-      <span class="text-light mb-3 mb-md-0">&copy; 2022 DaDaMall, Inc</span></a>
-    </div>
 
-  </footer>
-</div>
+<!-- <a href="main.jsp" title="DaDaMall" target="_blank" class="w3-hover-text-light"> -->
+
+<footer class="w3-center w3-black w3-padding-48 w3-xlarge">
+
+  <a href="#" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+  </div>
+  <img class="box" style="width: 40px; height: 40px;" src="../images/DA.png">
+  <p style="font-family: 'Amatic SC';"> <a href="../main.jsp" title="DaDaMall" class="w3-hover-text-light"> 2022 DaDaMall </a></p>
+</footer>
+

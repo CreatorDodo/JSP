@@ -10,7 +10,7 @@
 <title>DaDaMall</title>
 
 </head>
-  <body class="text-center bg-warning">
+  <body class="text-center">
   <%@ include file="/includes/header.jsp"%>
   
 <!--     container 화면 전체를 차지 하지 않는 고정 크기 컨테이너,
@@ -26,6 +26,8 @@
   
 
 <main>
+<!-- <h1 class="h1 mb-3 fw-large" style="padding-top: 30px;"> DaDaMall </h1> -->
+
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -37,7 +39,7 @@
 <img src="images/겨울스포츠광고.png"  width="100%" height="100%"> 
         <div class="container">
           <div class="carousel-caption text-start">
-                <p><a class="btn btn-lg btn-success" href="#">할인특가!</a></p>
+                <p><a class="btn btn-lg btn-success" href="../product/productList.jsp">할인특가!</a></p>
           </div>
         </div>
       </div>
@@ -46,7 +48,7 @@
               <div class="container">
           <div class="carousel-caption text-warning">
             <h1>ADIDAS EVENT</h1>
-            <p><a class="btn btn-lg btn-primary" href="#">더보기</a></p>
+            <p><a class="btn btn-lg btn-primary" href="../product/productList.jsp">더보기</a></p>
           </div>
         </div>
       </div>
@@ -54,7 +56,7 @@
        <img src="images/턱걸이밴드.png"  width="100%" height="100%"> 
         <div class="container">
           <div class="carousel-caption text-end">
-            <h1>행사상품</h1><p><a class="btn btn-lg btn-primary" href="#">더보기</a></p>
+            <h1>행사상품</h1><p><a class="btn btn-lg btn-primary" href="../product/productList.jsp">더보기</a></p>
           </div>
         </div>
       </div>
@@ -68,13 +70,14 @@
       <span class="visually-hidden">Next</span>
     </button>
     </div>
-
+    
+<hr class="featurette-divider">
 
     <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading fw-normal lh-1"><span class="text-muted">헬스용품 이벤트 </span></h2>
         <p class="lead">특가할인</p>
-        <p><a class="btn btn-lg btn-primary" href="#">더보기</a></p>
+        <p><a class="btn btn-lg btn-primary" href="../product/productList.jsp">더보기</a></p>
 
       </div>
       <div class="col-md-5">
@@ -88,7 +91,7 @@
       <div class="col-md-7 order-md-2">
         <h2 class="featurette-heading fw-normal lh-1"><span class="text-muted">턱걸이 용품 할인행사 </span></h2>
         <p class="lead">특가할인</p>
-        <p><a class="btn btn-lg btn-primary" href="#">더보기</a></p>      </div>
+        <p><a class="btn btn-lg btn-primary" href="../product/productList.jsp">더보기</a></p>      </div>
       <div class="col-md-5 order-md-1">
        <img src="images/턱걸이밴드2.png"  width="100%" height="100%"> 
       </div>
@@ -100,7 +103,7 @@
       <div class="col-md-7">
         <h2 class="featurette-heading fw-normal lh-1"><span class="text-muted">겨울스포츠 할인행사 </span></h2>
         <p class="lead">특가할인</p>
-        <p><a class="btn btn-lg btn-primary" href="#">더보기</a></p>      </div>
+        <p><a class="btn btn-lg btn-primary" href="../product/productList.jsp">더보기</a></p>      </div>
         <div class="col-md-5">
        <img src="images/겨울스포츠광고.png"  width="100%" height="100%"> 
       </div>

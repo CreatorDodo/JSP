@@ -6,15 +6,14 @@ CREATE TABLE `product` (
 	`description` VARCHAR(500) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	`maker` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	`category` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`stock` INT(10) NULL DEFAULT NULL,
-	`condition` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	`pimage` VARCHAR(100) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`quantity` INT(10) NULL DEFAULT NULL,
 	PRIMARY KEY (`pno`) USING BTREE,
 	UNIQUE INDEX `pid` (`pid`) USING BTREE
 )
+COLLATE='utf8mb4_0900_ai_ci'
 ENGINE=InnoDB
 ;
+
 
 CREATE TABLE `purchased` (
 	`purno` INT(10) NOT NULL AUTO_INCREMENT,

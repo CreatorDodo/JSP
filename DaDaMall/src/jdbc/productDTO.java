@@ -2,7 +2,15 @@ package jdbc;
 
 public class productDTO {
 
-	private String pid, pname, price, description, maker, category, stock, condition, pimage, quantity;
+	private String pno, pid, pname, price, description, maker, category, pimage;
+
+	public String getPno() {
+		return pno;
+	}
+
+	public void setPno(String pno) {
+		this.pno = pno;
+	}
 
 	public String getPid() {
 		return pid;
@@ -52,22 +60,6 @@ public class productDTO {
 		this.category = category;
 	}
 
-	public String getStock() {
-		return stock;
-	}
-
-	public void setStock(String stock) {
-		this.stock = stock;
-	}
-
-	public String getCondition() {
-		return condition;
-	}
-
-	public void setCondition(String condition) {
-		this.condition = condition;
-	}
-
 	public String getPimage() {
 		return pimage;
 	}
@@ -76,36 +68,24 @@ public class productDTO {
 		this.pimage = pimage;
 	}
 
-	public String getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(String quantity) {
-		this.quantity = quantity;
-	}
-
-	public productDTO(String pid, String pname, String price, String description, String maker, String category,
-			String stock, String condition, String pimage, String quantity) {
+	public productDTO(String pno, String pid, String pname, String price, String description, String maker,
+			String category, String pimage) {
 		super();
+		this.pno = pno;
 		this.pid = pid;
 		this.pname = pname;
 		this.price = price;
 		this.description = description;
 		this.maker = maker;
 		this.category = category;
-		this.stock = stock;
-		this.condition = condition;
 		this.pimage = pimage;
-		this.quantity = quantity;
 	}
 
 	public productDTO() {
 		super();
 	}
+	
+	
 
-	
-
-	
-	
 	
 }
