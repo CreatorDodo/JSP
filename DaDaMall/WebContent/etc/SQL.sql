@@ -8,33 +8,54 @@ CREATE TABLE `product` (
 	`category` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	`pimage` VARCHAR(100) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	PRIMARY KEY (`pno`) USING BTREE,
-	UNIQUE INDEX `pid` (`pid`) USING BTREE
+	UNIQUE INDEX `pname` (`pname`) USING BTREE
 )
-COLLATE='utf8mb4_0900_ai_ci'
 ENGINE=InnoDB
 ;
 
 
+
 CREATE TABLE `purchased` (
 	`purno` INT(10) NOT NULL AUTO_INCREMENT,
-	`pid` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`pname` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	`id` VARCHAR(128) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	`name` VARCHAR(32) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	`pquantity` INT(10) NULL DEFAULT NULL,
 	`email` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	`address` VARCHAR(200) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	PRIMARY KEY (`purno`) USING BTREE,
-	FOREIGN KEY (`id`) REFERENCES user (`id`),
-	FOREIGN KEY (`name`) REFERENCES user (`name`),
-	FOREIGN KEY (`email`) REFERENCES user (`email`),
-	FOREIGN KEY (`pid`) REFERENCES product (`pid`)
+	INDEX `id` (`id`) USING BTREE,
+	INDEX `name` (`name`) USING BTREE,
+	INDEX `email` (`email`) USING BTREE,
+	INDEX `purchased_ibfk_4` (`pname`) USING BTREE,
+	CONSTRAINT `purchased_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION,
+	CONSTRAINT `purchased_ibfk_2` FOREIGN KEY (`name`) REFERENCES `user` (`name`) ON UPDATE NO ACTION ON DELETE NO ACTION,
+	CONSTRAINT `purchased_ibfk_3` FOREIGN KEY (`email`) REFERENCES `user` (`email`) ON UPDATE NO ACTION ON DELETE NO ACTION,
+	CONSTRAINT `purchased_ibfk_4` FOREIGN KEY (`pname`) REFERENCES `product` (`pname`) ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 ENGINE=InnoDB
 ;
 
 
 
+
 CREATE TABLE `user` (
+	`id` VARCHAR(128) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`password` VARCHAR(32) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`name` VARCHAR(32) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`ts` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+	`email` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`gender` VARCHAR(32) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	PRIMARY KEY (`id`) USING BTREE,
+	UNIQUE INDEX `name` (`name`) USING BTREE,
+	UNIQUE INDEX `email` (`email`) USING BTREE
+)
+ENGINE=InnoDB
+;
+
+
+
+CREATE TABLE `temp` (
 	`id` VARCHAR(128) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	`password` VARCHAR(32) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	`name` VARCHAR(32) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',

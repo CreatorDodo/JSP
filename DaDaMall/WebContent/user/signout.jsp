@@ -26,7 +26,7 @@
 	<br>
 	<br>
 <div class="container">
-		<form action="surveyList.html" method="post">
+		<form action="signoutCheck.jsp" method="post" id="delForm">
 			<h3>탈퇴 안내</h3>
 			<br>
 			<h5 class="text-danger">※회원을 탈퇴하실 경우 사용하고 계신 아이디는 재사용 및 복구가
@@ -38,8 +38,8 @@
 			<table class="table">
 				<tbody>
 					<tr>
-						<th scope="row">SNS</th>
-						<td>SNS 팔로우, 팔로워 기록 및 게시물 삭제</td>
+						<th scope="row">결제기록</th>
+						<td>장바구니, 결제기록 및 구매목록 삭제</td>
 					</tr>
 					<tr>
 						<th scope="row">설문조사</th>
@@ -65,7 +65,7 @@
 				<tbody>
 					<tr>
 						<th scope="row" style="width: 30%">비밀번호</th>
-						<td><input type="text" name="password" id="password"
+						<td><input type="password" name="password" id="password"
 						class="form-control" required></td>
 					</tr>
 				</tbody>
@@ -76,10 +76,11 @@
 
 			<!-- 등록 취소 버튼 -->
 			<div class="text-right">
-				<a href="deleteProc.jsp"><input type="button" value="탈퇴하기"
-					class="btn btn-danger removeBtn"></a>
-					<input type="button" value="이전으로"
+			<input type="button" value="이전으로"
 					onclick="history.back()" class="btn btn-secondary">
+				<input type="button" value="탈퇴하기"
+					class="btn btn-danger removeBtn">
+					
 
 
 			</div>
@@ -87,13 +88,31 @@
 
 		</form>
 	</div>
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h1 class="modal-title fs-5" id="exampleModalLabel">DaDaMall</h1>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		   정말 탈퇴하시겠습니까?
+		      </div>
+		      <div class="modal-footer">
+		     <button type="button" class="btn btn-secondary" onclick="$('#delForm').submit()" data-bs-dismiss="modal">확인</button>		      </div>
+		    </div>
+		  </div>
+		</div>
 
+		<script>
+			$(function() {
+				
+			});
+		</script>
 
 	<script>
 	$('.removeBtn').click(function() {
-		if(!confirm("정말 탈퇴하시겠습니까?")){
-			return false;
-		}
+		$("#exampleModal2").modal("show");
 	});
 	</script>
 

@@ -7,29 +7,19 @@
 <title>productAdd.jsp</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
-  <body class="text-center">
-   
-  <%@ include file="/includes/header.jsp"%>
-  <header class="bgimg w3-display-container w3-grayscale-min" style="height: 80%" id="home">
- <img src="../images/스포츠이미지.jpg"  width="100%" height="90%"> 
-  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
-  </div>
-  <div class="w3-display-middle w3-center">
-    <span class="w3-text-white text-light" style="font-size:90px">DaDaMall</span>
-  </div>
-  <div class="w3-display-bottomright w3-center w3-padding-large">
-  </div>
-</header>
+<body>
+	<!-- 화면 상단 header -------------------------------------------- -->
+	<%@ include file="/includes/header.jsp"%>
 
-
-    <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic" style="padding-right: 220px;">배송정보</h1>
-     </div>
-		    <hr class="featurette-divider">
-		    	<br>
-	<br>
-	<br>
+	<!-- 메인 타이틀 ----------------------------------------- -->
+	<div class="jumbotron">
+		<div class="container">
+			<h1 class="display-4">배송 정보</h1>
+		</div>
+	</div>
 
 	<!-- 메인 ------------------------------------------------- -->
 	<div class="container">

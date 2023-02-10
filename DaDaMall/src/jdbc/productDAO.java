@@ -21,11 +21,11 @@ public class productDAO {
 	productDTO pdto;
 	private static Connection conn;
 	
-	public static boolean insert(String pid, String pname, String description, String maker, String category, String pimage) throws SQLException, NamingException {
+	public static boolean insert(String pid, String pname, String price, String description, String maker, String category, String pimage) throws SQLException, NamingException {
 			
 			try {
-				sql = " INSERT INTO product (pid, pname, description, maker, category, pimage) "
-						+ " VALUES(?, ?, ?, ?, ?, ?) ";
+				sql = " INSERT INTO product (pid, pname, price, description, maker, category, pimage) "
+						+ " VALUES(?, ?, ?, ?, ?, ?, ?) ";
 	
 				conn = ConnectionPool.get();
 				
@@ -33,10 +33,11 @@ public class productDAO {
 	
 				pstmt.setString(1, pid);
 				pstmt.setString(2, pname);
-				pstmt.setString(3, description);
-				pstmt.setString(4, maker);
-				pstmt.setString(5, category);
-				pstmt.setString(6, pimage);
+				pstmt.setString(3, price);
+				pstmt.setString(4, description);
+				pstmt.setString(5, maker);
+				pstmt.setString(6, category);
+				pstmt.setString(7, pimage);
 	
 				int result = pstmt.executeUpdate();
 				if (result == 1) {
@@ -178,7 +179,7 @@ public class productDAO {
 	
 	try {
 		
-		sql = "DELETE product where pno=? ";
+		sql = "DELETE FROM product where pno=? ";
 
 		conn = ConnectionPool.get();
 		

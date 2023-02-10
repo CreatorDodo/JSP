@@ -26,37 +26,40 @@
 	<br>
 	<br>
 	<div class="container">
-		<form action="productAddProc.jsp" method="post" id="prodRegFrm" name="prodRegFrm"
+		<form action="signupCheckAJAX.jsp" method="get" id="prodRegFrm" name="prodRegFrm"
 			class="form-horizontal" enctype="multipart/form-data">
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label-lg"> 아이디 
 				</label>
 				<div class="col-sm-3">
 					<input type="text" onkeyup="idChkr(this)" name="id" id="ide"
-						class="form-control" required>
+						class="form-control" required><span style="color: red;" id="idChk"></span>
 				</div>
+				
 			</div>
 			<br>
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label-lg"> 비밀번호 </label>
 				<div class="col-sm-3">
 					<input type="password" onkeyup="pwChkr(this)" name="password" id="pwe"
-						class="form-control" required>				</div>
+						class="form-control" required><span style="color: red;" id="pwChk"></span>				</div>
+						<span style="color: red;" id="pwChk"></span>
 			</div>
 			<br>
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label-lg"> 비밀번호 확인 </label>
 				<div class="col-sm-3">
 					<input type="password" onkeyup="pwcChkr(this)"
-						id="pwChke" class="form-control" required>
+						id="pwChke" class="form-control" required><span style="color: red;" id="pwcChk"></span>
 
 				</div>
+				
 			</div>
 			<br>
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label-lg"> 이름 </label>
 				<div class="col-sm-3">
-					<input type="text" name="name" class="form-control">
+					<input type="text" name="name" class="form-control" required>
 				</div>
 			</div>
 			<br>
@@ -93,8 +96,8 @@
 						class="btn btn-secondary backBtn">
 						이전으로
 					</button>
-					<button type="button" onclick="checkProduct()" class="btn btn-success">
-						회원가입 </button>
+					 <input type="submit"
+					value="회원가입" class="btn btn-success joinBtn regBtn">
 					<br> <br>
 
 				</div>
@@ -209,33 +212,33 @@
 
 
 		
-		function idChkr(obj) {
-			if (obj.value.length >= 5 && 10 >= obj.value.length) {
-				$.ajax({
-					url : 'idChkProc.jsp',
-					type : 'post',
-					data : 'id=' + $('#ide').val(),
-					dataType : 'text',
-					success : function(result) {
-						$('#idChk').text(result);
-						if (obj.value == 'admin') {
-							$('#frm').attr('onSubmit', 'return false');
-						} else {
+// 		function idChkr(obj) {
+// 			if (obj.value.length >= 5 && 10 >= obj.value.length) {
+// 				$.ajax({
+// 					url : 'idChkProc.jsp',
+// 					type : 'post',
+// 					data : 'id=' + $('#ide').val(),
+// 					dataType : 'text',
+// 					success : function(result) {
+// 						$('#idChk').text(result);
+// 						if (obj.value == 'admin') {
+// 							$('#frm').attr('onSubmit', 'return false');
+// 						} else {
 							
-							$('#frm').attr('onSubmit', 'return true');
-						}
+// 							$('#frm').attr('onSubmit', 'return true');
+// 						}
 
-					},
-					error : function(error) {
-						console.log(error); //요청 실패 시 처리
-					}
+// 					},
+// 					error : function(error) {
+// 						console.log(error); //요청 실패 시 처리
+// 					}
 
-				});
-			} else {
-				$('#idChk').text('5 ~ 10자 이내로 입력해 주세요.');
-				$('#frm').attr('onSubmit', 'return false');
-			}
-		}
+// 				});
+// 			} else {
+// 				$('#idChk').text('5 ~ 10자 이내로 입력해 주세요.');
+// 				$('#frm').attr('onSubmit', 'return false');
+// 			}
+// 		}
 
 		function pwChkr(obj) {
 			var txt = $(obj).val();

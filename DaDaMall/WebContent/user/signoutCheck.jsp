@@ -15,23 +15,26 @@
 	String password = request.getParameter("password");
 	
 	int result = userDAO.login(id, password);
+	int result2 = userDAO.loginTemp(id, password);
 	
-	if(result == 0) {
+	
+	if(result == 0 || result2 == 0) {
 		userDAO.delete(id);
+		userDAO.deleteTemp(id);
 		session.invalidate();
 		%>
 		<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h1 class="modal-title fs-5" id="exampleModalLabel">회원탈퇴</h1>
+		        <h1 class="modal-title fs-5" id="exampleModalLabel">DaDaMall</h1>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
-		   회원 탈퇴 성공
+		   회원탈퇴 완료.
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" onclick="location.href = 'main.jsp'" data-bs-dismiss="modal">메인 이동</button>
+		        <button type="button" class="btn btn-secondary" onclick="location.href = '../main.jsp'" data-bs-dismiss="modal">메인 이동</button>
 		      </div>
 		    </div>
 		  </div>
@@ -49,14 +52,14 @@
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h1 class="modal-title fs-5" id="exampleModalLabel">회원탈퇴</h1>
+		        <h1 class="modal-title fs-5" id="exampleModalLabel">DaDaMall</h1>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
 		   아이디 또는 비밀번호가 일치하지 않습니다.
 		      </div>
 		      <div class="modal-footer">
-		     <button type="button" class="btn btn-secondary" onclick="location.href = 'signout.jsp'" data-bs-dismiss="modal">확인</button>		      </div>
+		     <button type="button" class="btn btn-secondary" onclick="history.back()" data-bs-dismiss="modal">확인</button>		      </div>
 		    </div>
 		  </div>
 		</div>

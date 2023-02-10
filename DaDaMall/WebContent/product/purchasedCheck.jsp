@@ -15,7 +15,10 @@
 	request.setCharacterEncoding("utf-8");	//한글 처리
 	
 	String to = request.getParameter("to");
-	String pass = request.getParameter("pass");
+	String name = request.getParameter("name");
+	String pname = request.getParameter("pname");
+	String pquantity = request.getParameter("pquantity");
+	String address = request.getParameter("address");
 	
 	Map<String, String> emailInfo = new HashMap<String, String>();
 	
@@ -38,7 +41,10 @@
 		br.close();
 	
 		// 읽어온 템플릿의 자리표시자인 __CONTENT__ 부분을 메일 내용으로 대체
-		htmlContent = htmlContent.replace("__PASS__", pass);
+		htmlContent = htmlContent.replace("__NAME__", name);
+		htmlContent = htmlContent.replace("__PNAME__", pname);
+		htmlContent = htmlContent.replace("__PQUANTITY__", pquantity);
+		htmlContent = htmlContent.replace("__ADDRESS__", address);
 	
 		// 변경 내용 저장
 	

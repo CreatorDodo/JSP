@@ -25,7 +25,7 @@ td:not(:first-child), th:not(:first-child) {text-align: center;}
 	</div>
 	<!-- 메인 ------------------------------------------------- -->
 
-<jsp:useBean id="pdao" class="market.dao.ProductDAO" />
+<jsp:useBean id="pdao" class="jdbc.productDAO" />
 <%
 List<ProductVO> cartList = (ArrayList<ProductVO>) session.getAttribute("cartList");
 

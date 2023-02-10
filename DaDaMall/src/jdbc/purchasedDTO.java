@@ -2,7 +2,7 @@ package jdbc;
 
 public class purchasedDTO {
 
-	private String purno, pid, id, name, pquantity, email, address;
+	private String purno, pname, id, name, pquantity, email, address;
 
 	public String getPurno() {
 		return purno;
@@ -12,12 +12,12 @@ public class purchasedDTO {
 		this.purno = purno;
 	}
 
-	public String getPid() {
-		return pid;
+	public String getPname() {
+		return pname;
 	}
 
-	public void setPid(String pid) {
-		this.pid = pid;
+	public void setPname(String pname) {
+		this.pname = pname;
 	}
 
 	public String getId() {
@@ -60,11 +60,11 @@ public class purchasedDTO {
 		this.address = address;
 	}
 
-	public purchasedDTO(String purno, String pid, String id, String name, String pquantity, String email,
+	public purchasedDTO(String purno, String pname, String id, String name, String pquantity, String email,
 			String address) {
 		super();
 		this.purno = purno;
-		this.pid = pid;
+		this.pname = pname;
 		this.id = id;
 		this.name = name;
 		this.pquantity = pquantity;
@@ -75,7 +75,6 @@ public class purchasedDTO {
 	public purchasedDTO() {
 		super();
 	}
-
 	
 	
 }

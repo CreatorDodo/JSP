@@ -21,17 +21,17 @@ public class purchasedDAO {
 	purchasedDTO purdto;
 	private static Connection conn;
 	
-	public static boolean insert(String pid, String id, String name, String pquantity, String email, String address) throws SQLException, NamingException {
+	public static boolean insert(String pname, String id, String name, String pquantity, String email, String address) throws SQLException, NamingException {
 			
 			try {
-				sql = " INSERT INTO purchased (pid, id, name, pquantity, email, address) "
+				sql = " INSERT INTO purchased (pname, id, name, pquantity, email, address) "
 						+ " VALUES(?, ?, ?, ?, ?, ?) ";
 	
 				conn = ConnectionPool.get();
 				
 				pstmt = conn.prepareStatement(sql);
 	
-				pstmt.setString(1, pid);
+				pstmt.setString(1, pname);
 				pstmt.setString(2, id);
 				pstmt.setString(3, name);
 				pstmt.setString(4, pquantity);
@@ -111,7 +111,7 @@ public class purchasedDAO {
 			
 			if (rs.next()) {
 				purchased.setPurno((rs.getString("purno")));
-				purchased.setPid((rs.getString("pid")));
+				purchased.setPname((rs.getString("pname")));
 				purchased.setId((rs.getString("id")));
 				purchased.setName((rs.getString("name")));
 				purchased.setPquantity((rs.getString("pquantity")));
@@ -171,7 +171,7 @@ public class purchasedDAO {
 	
 	try {
 		
-		sql = "DELETE purchased where purno=? ";
+		sql = "DELETE FROM purchased where purno=? ";
 
 		conn = ConnectionPool.get();
 		
