@@ -12,8 +12,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
 <% String sid = (String) session.getAttribute("id"); %>
-
     <style>
+    
+    #STATICMENU { margin: 0pt; padding: 0pt; position: absolute; z-index: 1; right: 0px; top: 0px;}
     
     @font-face {
     font-family: 'GmarketSansMedium';
@@ -162,10 +163,64 @@
               <% } %>
   </nav>
 
-       <link href="carousel.css" rel="stylesheet">
+
        
-       <!--Start of Tawk.to Script-->
+       
+     
+<div class="card mb-4 rounded-4 shadow-sm bg-dark" id="STATICMENU" style="width: 80px; height: 300px; border: solid 1px black;">
+
+    <ul class="nav text-centercard rounded-4" style="width: 80px;">
+      <li>
+        <a href="../main.jsp" class="nav-link py-3 border-bottom border-dark rounded-0" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
+<img class="box" style="width: 50px; height: 50px; border: solid 1px black;" src="../images/DA.png">
+      </a>
+      </li>
+      <li onclick="window.history.back()" class="bg-light"  style="width: 78px;">
+        <a href="#" class="nav-link py-3 border-bottom border-dark rounded-0" title="뒤로가기" data-bs-toggle="tooltip" data-bs-placement="right">
+<i class="w3-xlarge fa fa-arrow-left"></i>
+     </a>
+      </li>
+      <li class="bg-light" onclick="window.location.reload()"  style="width: 78px;">
+        <a href="#" class="nav-link py-3 border-bottom border-dark rounded-0" title="새로고침" data-bs-toggle="tooltip" data-bs-placement="right">
+     <i class="w3-xlarge fa fa-refresh"></i>
+     </a>
+      </li>
+      <li onclick="window.history.forward()" class="bg-light"  style="width: 78px;">
+        <a href="#" class="nav-link py-3 border-bottom border-dark rounded-0" title="앞으로 가기" data-bs-toggle="tooltip" data-bs-placement="right">
+     <i class="w3-xlarge fa fa-arrow-right"></i>
+      </a>
+      </li>
+    </ul>
+  </div>
+
+     
 <script type="text/javascript">
+var stmnLEFT = 10; // 오른쪽 여백 
+var stmnGAP1 = 0; // 위쪽 여백 
+var stmnGAP2 = 150; // 스크롤시 브라우저 위쪽과 떨어지는 거리 
+var stmnBASE = 150; // 스크롤 시작위치
+var stmnActivateSpeed = 10; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+var stmnScrollSpeed = 20; //스크롤 속도 (클수록 느림)var stmnTimer;
+
+function RefreshStaticMenu() {
+var stmnStartPoint, stmnEndPoint;
+stmnStartPoint = parseInt(document.getElementById('STATICMENU').style.top, 10);
+stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2;
+if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1;
+if (stmnStartPoint != stmnEndPoint) {
+stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 );
+document.getElementById('STATICMENU').style.top = parseInt(document.getElementById('STATICMENU').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px';
+stmnRefreshTimer = stmnScrollSpeed;
+}
+stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed);
+}
+function InitializeStaticMenu() {
+document.getElementById('STATICMENU').style.right = stmnLEFT + 'px'; //처음에 오른쪽에 위치. left로 바꿔도.
+document.getElementById('STATICMENU').style.top = document.body.scrollTop + stmnBASE + 'px'; 
+RefreshStaticMenu();
+}
+
+
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -175,5 +230,8 @@ s1.charset='UTF-8';
 s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
+
+
+
 </script>
 <!--End of Tawk.to Script-->

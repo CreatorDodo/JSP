@@ -2,15 +2,17 @@
     pageEncoding="UTF-8"%>
     <%@ page import="java.util.*, java.security.*, java.io.*, java.net.*" %>
     <%@ page errorPage = "page_error_page.jsp" %>
+    
 <%@page import="jdbc.*"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>DaDaMall</title>
-
+<link href="carousel.css" rel="stylesheet">
 </head>
   <body class="text-center">
+  
   <%@ include file="/includes/header.jsp"%>
   
 <!--     container 화면 전체를 차지 하지 않는 고정 크기 컨테이너,
@@ -116,5 +118,9 @@
 
 </main>
      <%@ include file="/includes/footer.jsp"%>
+     
+     <script type="text/javascript">
+     $("#STATICMENU").hide();
+     </script>
   </body>
 </html>

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>회원탈퇴</title>
 </head>
- <body>
+  <body onload="InitializeStaticMenu()">
  <%@ include file="../includes/header.jsp"%>
   <header class="bgimg w3-display-container w3-grayscale-min" style="height: 80%" id="home">
  <img src="../images/스포츠이미지.jpg"  width="100%" height="90%"> 

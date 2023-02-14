@@ -10,7 +10,7 @@
 
     
 </head>
- <body class="text-center">
+  <body class="text-center"  onload="InitializeStaticMenu()">
 
 <div class="container" style="width: 30%; margin-top: 200px;">
 <main class="form-signin w-100 m-auto">

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>상품등록</title>
 </head>
-  <body class="text-center">
+  <body class="text-center"  onload="InitializeStaticMenu()">
    
   <%@ include file="/includes/header.jsp"%>
   <header class="bgimg w3-display-container w3-grayscale-min" style="height: 80%" id="home">
