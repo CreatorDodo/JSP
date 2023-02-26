@@ -1,5 +1,5 @@
 <%@page import="smtp.SendMail"%>
-<%@page import="jdbc.userDAO"%>
+<%@page import="jdbc.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -22,8 +22,9 @@
 	boolean check = false; 
 	
 	//DB에 넣기
-	boolean result = userDAO.inserttemp(id, password, name, email, gender);
-	if(result && (userDAO.exist(id) || userDAO.existTemp(id))) {%>
+	boolean result = UserDAO.inserttemp(id, password, name, email, gender);
+	if(result && (UserDAO.exist(id) || UserDAO.existTemp(id))) {
+%>
 		<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content"  style="width: 110%;">
@@ -32,7 +33,7 @@
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
-		   <%=name %>님  환영합니다! DaDaMall 회원가입이 완료되었습니다!<br>
+		   <%=name%>님  환영합니다! DaDaMall 회원가입이 완료되었습니다!<br>
 		   [ 정회원 승인여부는 2~3일 내에 DaDaMall 홈페이지에서 알려드립니다. ]
 		      </div>
 		      <div class="modal-footer">
@@ -47,11 +48,12 @@
 				$("#exampleModal2").modal("show");
 			});
 		</script><%
-		check = true;
+			check = true;
 
-		
-	}	// 이미 DB에 사용중인 아이디인지 먼저 확인
-else if(userDAO.exist(id) || userDAO.existTemp(id)) {%>
+				
+			}	// 이미 DB에 사용중인 아이디인지 먼저 확인
+		else if(UserDAO.exist(id) || UserDAO.existTemp(id)) {
+		%>
 	<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">

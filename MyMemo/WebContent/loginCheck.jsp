@@ -1,4 +1,4 @@
-<%@page import="jdbc.userDAO"%>
+<%@page import="jdbc.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -14,10 +14,10 @@
 	String id = request.getParameter("id");
 	String password = request.getParameter("password");
 	
-	int result = userDAO.login(id, password);
+	int result = UserDAO.login(id, password);
 	
 	if(result == 1) {
-		%>
+%>
 		<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">

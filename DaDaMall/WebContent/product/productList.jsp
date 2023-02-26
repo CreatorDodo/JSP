@@ -49,10 +49,10 @@
 
 
 			<%
-			
-			ArrayList<productDTO> products = productDAO.getAllList();
+				ArrayList<productDTO> products = BoardDAO.getAllList();
 
-			if (products == null || products.size() < 1) {%>
+					if (products == null || products.size() < 1) {
+			%>
 
 			<div class="container" style="width: 50%; padding-bottom: 300px;">
 				<p class="alert alert-danger"

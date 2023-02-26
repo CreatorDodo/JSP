@@ -1,6 +1,6 @@
 <%@page import="jdbc.*"%>
 <%@page import="java.util.*"%>
-<%@page import="jdbc.userDAO"%>
+<%@page import="jdbc.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -98,10 +98,11 @@
   
 
     
-    <% ArrayList<userDTO> users = userDAO.list();
-    
-    for(userDTO user : users) {
-    %>
+    <%
+          	ArrayList<UserDTO> users = UserDAO.list();
+                        
+                        for(UserDTO user : users) {
+          %>
     
    <tr>
     <td scope="col"><%=user.getId() %></td>

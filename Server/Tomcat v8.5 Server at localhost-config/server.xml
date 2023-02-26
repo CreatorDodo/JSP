@@ -60,7 +60,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
-    <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector connectionTimeout="20000" maxPostSize="-1" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -152,7 +152,8 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="mailGoogle" path="/mailGoogle" reloadable="true" source="org.eclipse.jst.jee.server:mailGoogle"/><Context docBase="mailLogin" path="/mailLogin" reloadable="true" source="org.eclipse.jst.jee.server:mailLogin"/><Context docBase="mapExam" path="/mapExam" reloadable="true" source="org.eclipse.jst.jee.server:mapExam"/><Context docBase="smsExam" path="/smsExam" reloadable="true" source="org.eclipse.jst.jee.server:smsExam"/><Context docBase="AJAXExam" path="/AJAXExam" reloadable="true" source="org.eclipse.jst.jee.server:AJAXExam"/><Context docBase="JoinExam" path="/JoinExam" reloadable="true" source="org.eclipse.jst.jee.server:JoinExam"/><Context docBase="AJAXMaster" path="/AJAXMaster" reloadable="true" source="org.eclipse.jst.jee.server:AJAXMaster"/><Context docBase="DaDaMall" path="/" reloadable="true" source="org.eclipse.jst.jee.server:DaDaMall"/></Host>
+      
+      <Context docBase="StudyTime" path="/" reloadable="true" source="org.eclipse.jst.jee.server:StudyTime"/><Context docBase="springmvc" path="/controller" reloadable="true" source="org.eclipse.jst.jee.server:springmvc"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -1,4 +1,4 @@
-<%@page import="jdbc.userDAO"%>
+<%@page import="jdbc.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -14,15 +14,15 @@
 	String id = request.getParameter("id");
 	String password = request.getParameter("password");
 	
-	int result = userDAO.login(id, password);
-	int result2 = userDAO.loginTemp(id, password);
+	int result = UserDAO.login(id, password);
+	int result2 = UserDAO.loginTemp(id, password);
 	
 	
 	if(result == 0 || result2 == 0) {
-		userDAO.delete(id);
-		userDAO.deleteTemp(id);
+		UserDAO.delete(id);
+		UserDAO.deleteTemp(id);
 		session.invalidate();
-		%>
+%>
 		<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">

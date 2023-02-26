@@ -34,7 +34,7 @@ MultipartRequest multiReq = new MultipartRequest(request, savePath, maxSize, enc
 	
 %>
 	
-	<jsp:useBean id="pdao" class="jdbc.productDAO"/>
+	<jsp:useBean id="pdao" class="jdbc.boardDAO"/>
 
 <%
 	//상품 등록 성공 시

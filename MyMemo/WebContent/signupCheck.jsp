@@ -1,5 +1,5 @@
 <%@page import="smtp.SendMail"%>
-<%@page import="jdbc.userDAO"%>
+<%@page import="jdbc.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -18,7 +18,8 @@
 	String email = request.getParameter("email");
 	
 	// 이미 DB에 사용중인 아이디인지 먼저 확인
-	if(userDAO.exist(id)) {%>
+	if(UserDAO.exist(id)) {
+%>
 		<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
@@ -41,18 +42,19 @@
 				$("#exampleModal1").modal("show");
 			});
 		</script><%
-	}
-		
-	
-	
-	
-	
-	//DB에 넣기
-	int result = userDAO.insert(id, password, name);
-	
-	SendMail.sending(id, email, name);
-	
-	if(result == 1) {%>
+			}
+				
+			
+			
+			
+			
+			//DB에 넣기
+			int result = UserDAO.insert(id, password, name);
+			
+			SendMail.sending(id, email, name);
+			
+			if(result == 1) {
+		%>
 		<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
