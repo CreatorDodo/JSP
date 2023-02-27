@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-02-27T01:12:39.971Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56" etag="X1FMZPYs4r2OA4Xz09CI" version="20.8.23" type="github">
+<mxfile host="app.diagrams.net" modified="2023-02-27T04:55:16.381Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56" etag="OOBA7ZOCXooBbvT29ZFB" version="20.8.23" type="github">
   <diagram name="페이지-1" id="ffGm_zXGVz67d6vqP5ar">
     <mxGraphModel dx="1434" dy="759" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -63,6 +63,48 @@
             <mxPoint x="160" y="180" as="sourcePoint" />
             <mxPoint x="210" y="130" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="UMrJ9do8t8X8YAawynfj-32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontSize=13;" edge="1" parent="1" source="UMrJ9do8t8X8YAawynfj-26" target="UMrJ9do8t8X8YAawynfj-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UMrJ9do8t8X8YAawynfj-26" value="Domain Object" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="640" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UMrJ9do8t8X8YAawynfj-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontSize=13;" edge="1" parent="1" source="UMrJ9do8t8X8YAawynfj-27" target="UMrJ9do8t8X8YAawynfj-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UMrJ9do8t8X8YAawynfj-27" value="Controller" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="520" y="640" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UMrJ9do8t8X8YAawynfj-34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontSize=13;" edge="1" parent="1" source="UMrJ9do8t8X8YAawynfj-28" target="UMrJ9do8t8X8YAawynfj-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UMrJ9do8t8X8YAawynfj-28" value="Service Layer" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="360" y="640" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UMrJ9do8t8X8YAawynfj-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontSize=13;" edge="1" parent="1" source="UMrJ9do8t8X8YAawynfj-29" target="UMrJ9do8t8X8YAawynfj-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UMrJ9do8t8X8YAawynfj-29" value="Persistence Layer" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="200" y="640" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UMrJ9do8t8X8YAawynfj-30" value="View" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="680" y="640" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UMrJ9do8t8X8YAawynfj-31" value="CarDTO" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="720" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UMrJ9do8t8X8YAawynfj-36" value="CarRepository.java&lt;br style=&quot;font-size: 10px;&quot;&gt;CarRepositoryImpl.java" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="720" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UMrJ9do8t8X8YAawynfj-37" value="CarService.java&lt;br style=&quot;font-size: 11px;&quot;&gt;CarServiceImpl.java" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="360" y="720" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UMrJ9do8t8X8YAawynfj-38" value="CarController.java" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="520" y="720" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UMrJ9do8t8X8YAawynfj-39" value="cars.jsp" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="680" y="720" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
