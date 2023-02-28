@@ -1,1 +1,61 @@
-<mxfile host="app.diagrams.net" modified="2023-02-28T01:08:29.147Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57" version="20.8.23" etag="sYczDN9-zw-HeeNNZ9ES" type="github"><diagram name="페이지-1" id="ODj3zpauXJAT0maj6m9R">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2023-02-28T01:22:45.807Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57" etag="Q_lY_Sj7_ktVkrg7Lc2T" version="20.8.23" type="github">
+  <diagram name="페이지-1" id="ODj3zpauXJAT0maj6m9R">
+    <mxGraphModel dx="2261" dy="759" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="U1t-4a0tSFP0WCm-M1Cf-1" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;@Controller&lt;br&gt;public class BoardController {&lt;br&gt;	&lt;br&gt;	@Autowired		// DI&lt;br&gt;	private BoardService boardService;&lt;br&gt;	&lt;br&gt;	@RequestMapping(&quot;/board&quot;)&lt;br&gt;	public String BoardList(Model model) {&lt;br&gt;		List list = boardService.getAllBoardList();&lt;br&gt;		model.addAttribute(&quot;boardList&quot;, list);&lt;br&gt;		return &quot;board&quot;;&lt;br&gt;	}&lt;br&gt;}&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="320" y="240" width="460" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="U1t-4a0tSFP0WCm-M1Cf-2" value="Request (http://test.com/board)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=22;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="200" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="U1t-4a0tSFP0WCm-M1Cf-3" value="컨트롤러 정의" style="rounded=1;whiteSpace=wrap;html=1;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="280" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="U1t-4a0tSFP0WCm-M1Cf-6" value="요청 매핑 경로 설정" style="rounded=1;whiteSpace=wrap;html=1;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="360" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="U1t-4a0tSFP0WCm-M1Cf-7" value="뷰와 모델 반환" style="rounded=1;whiteSpace=wrap;html=1;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="520" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="U1t-4a0tSFP0WCm-M1Cf-8" value="요청 처리 매서드" style="rounded=1;whiteSpace=wrap;html=1;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="440" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="U1t-4a0tSFP0WCm-M1Cf-9" value="Response" style="rounded=1;whiteSpace=wrap;html=1;fontSize=22;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="600" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="U1t-4a0tSFP0WCm-M1Cf-12" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;fontSize=22;exitX=1;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="U1t-4a0tSFP0WCm-M1Cf-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="480" y="445" as="sourcePoint" />
+            <mxPoint x="540" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U1t-4a0tSFP0WCm-M1Cf-13" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;fontSize=22;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="U1t-4a0tSFP0WCm-M1Cf-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="150" as="sourcePoint" />
+            <mxPoint x="380" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U1t-4a0tSFP0WCm-M1Cf-14" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;fontSize=22;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="585" as="sourcePoint" />
+            <mxPoint x="380" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U1t-4a0tSFP0WCm-M1Cf-15" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;fontSize=22;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="U1t-4a0tSFP0WCm-M1Cf-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="535" as="sourcePoint" />
+            <mxPoint x="380" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U1t-4a0tSFP0WCm-M1Cf-16" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;fontSize=22;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="U1t-4a0tSFP0WCm-M1Cf-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="440" as="sourcePoint" />
+            <mxPoint x="360" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
