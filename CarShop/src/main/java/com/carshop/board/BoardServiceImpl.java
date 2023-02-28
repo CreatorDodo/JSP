@@ -1,4 +1,4 @@
-package com.carshop.controller;
+package com.carshop.board;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class BoardServiceImpl implements BoardService{
 
-	@Autowired
+	@Autowired		// DI 의존성 주입 IoC 제어의 역전
 	private BoardRepository boardRepository;
 	
 	@Override
