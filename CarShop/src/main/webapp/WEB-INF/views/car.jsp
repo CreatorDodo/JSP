@@ -38,26 +38,17 @@
     </div>
   </nav>
 <div class="alert alert-dark" role="alert">
-<div class="container"><h1>차량 보기(김도영)</h1></div>
+<div class="container"><h1>차량 상세보기</h1></div>
 </div>
 
 
 	<div class="container">
 		<div class="row" align="center">
-
-			<c:forEach items="${carList}" var="car">
-				<div class="col-md-4">
 				<h3>${car.cid}</h3>
 				<p>${car.cname}
 				<p>${car.cprice}만원
-				<p><a href="/car?id=${car.cid }" class="btn btn-Secondary" role="button">상세보기</a></p>
-			<%-- <a href='<c:url value="/car?id=${car.cid }"/>' class="btn btn-Secondary" role="button"> --%>
-				
-				</div>
-				
-				
-			</c:forEach>
-
+				<p>${car.ccate}
+				<p>${car.cdesc}
 		</div>
 	</div>
 
