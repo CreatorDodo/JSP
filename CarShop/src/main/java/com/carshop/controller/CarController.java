@@ -39,12 +39,12 @@ public class CarController {
 		return "car";
 	}
 	
-	@GetMapping("/add")
+	@GetMapping("/admin/add")
 	public String requestaddCarForm(@ModelAttribute("NewCar") CarDTO car) {
 		return "addCar";
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("/admin/add")
 	public String submitAddNewCar(@ModelAttribute("NewCar") CarDTO car) {
 		carService.setNewCar(car);
 		
@@ -54,6 +54,21 @@ public class CarController {
 	@ModelAttribute
 	public void addAttributes(Model model) {
 		model.addAttribute("addTitle", "신규 차량 등록");
+	}
+	
+	@GetMapping("/login")
+	public String loginMethod() {
+		return "login";
+	}
+	
+	@GetMapping("//loginfailed")
+	public String loginfailedMethod() {
+		return "login";
+	}
+	
+	@GetMapping("/logout")
+	public String logoutMethod() {
+		return "login";
 	}
 	
 }
