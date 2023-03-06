@@ -19,6 +19,10 @@
 
 			<c:forEach items="${carList}" var="car">
 				<div class="col-md-4">
+				
+				
+				
+				<img src='<c:url value="/resources/images/${car.getCarimage().getOriginalFilename()}"/>'/>
 				<h3>${car.cid}</h3>
 				<p>${car.cname}
 				<p>${car.cprice}만원

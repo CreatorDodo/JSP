@@ -13,7 +13,7 @@
 <div class="alert alert-dark" role="alert">
 <div class="container"><h1>차량 등록</h1>
 
-			<form:form modelAttribute="NewCar" class="form-horizontal">
+			<form:form modelAttribute="NewCar" action="/admin/add?${_csrf.parameterName}=${_csrf.token}" class="form-horizontal" enctype="multipart/form-data">
 				<fieldset>
 				<legend>
 				${addTitle }
@@ -28,7 +28,8 @@
 					<form:input path="ccate" class="form-control" />
 					자동차 소개 :
 					<form:textarea path="cdesc" cols="50" rows="2" class="form-control" />
-
+					자동차 사진 :
+					<form:input path="carimage" type="file" class="form-control" />
 
 				<input type="submit" class="btn btn-primary" value="등록">
 

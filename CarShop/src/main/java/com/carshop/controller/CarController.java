@@ -1,8 +1,15 @@
 package com.carshop.controller;
 
+import java.io.File;
+import java.net.URL;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.fileupload.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class CarController {
@@ -45,9 +53,29 @@ public class CarController {
 	}
 	
 	@PostMapping("/admin/add")
-	public String submitAddNewCar(@ModelAttribute("NewCar") CarDTO car) {
-		carService.setNewCar(car);
+	public String submitAddNewCar(@ModelAttribute("NewCar") CarDTO car, HttpServletRequest request) {
 		
+		MultipartFile carimage = car.getCarimage();
+		String saveName = carimage.getOriginalFilename();
+		
+//		String uploadpath = request.getRealPath("/resources/images");
+		
+//		File saveFile = new File("C:\\upload", saveName);
+		File saveFile = new File("/resources/images/", saveName);
+		System.out.println(saveFile.getPath());
+
+		
+		if (carimage != null && !carimage.isEmpty()) {
+			try {
+				carimage.transferTo(saveFile);
+			} catch (Exception e) {
+//				throw new RuntimeException("차량 이미지 업로드가 실패했습니다.");
+				e.printStackTrace();
+			}
+		}
+				
+				
+		carService.setNewCar(car);
 		return "redirect:/cars";
 	}
 	
