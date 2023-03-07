@@ -22,7 +22,8 @@
 				
 				
 				
-				<img src='<c:url value="/resources/images/${car.getCarimage().getOriginalFilename()}"/>'/>
+<%-- 				<img src='<c:url value="/resources/images/${car.getCarimage().getOriginalFilename()}"/>'/> --%>
+				<img src='<c:url value="/images/${car.getCarimage().getOriginalFilename()}"/>'/>
 				<h3>${car.cid}</h3>
 				<p>${car.cname}
 				<p>${car.cprice}만원

@@ -1,15 +1,12 @@
 package com.carshop.controller;
 
 import java.io.File;
-import java.net.URL;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.fileupload.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,6 +49,9 @@ public class CarController {
 		return "addCar";
 	}
 	
+	@Resource(name = "uploadPath")
+	private String uploadPath;
+	
 	@PostMapping("/admin/add")
 	public String submitAddNewCar(@ModelAttribute("NewCar") CarDTO car, HttpServletRequest request) {
 		
@@ -61,8 +61,8 @@ public class CarController {
 //		String uploadpath = request.getRealPath("/resources/images");
 		
 //		File saveFile = new File("C:\\upload", saveName);
-		File saveFile = new File("/resources/images/", saveName);
-		System.out.println(saveFile.getPath());
+		File saveFile = new File(uploadPath + "\\images", saveName);
+//		System.out.println(saveFile.getPath());
 
 		
 		if (carimage != null && !carimage.isEmpty()) {
