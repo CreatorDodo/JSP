@@ -1,1 +1,43 @@
-<mxfile host="app.diagrams.net" modified="2023-03-08T03:39:36.795Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.63" version="21.0.2" etag="a9u_vhtLtvZQ_VygsMCY" type="github"><diagram name="페이지-1" id="8-uDN1Uygk8m0bMDou-o">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2023-03-08T03:41:01.028Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.63" etag="vEClrvzpYVlCDDgA4hBz" version="21.0.2" type="github">
+  <diagram name="페이지-1" id="8-uDN1Uygk8m0bMDou-o">
+    <mxGraphModel dx="1434" dy="759" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="gigBqYb2qnv4WfAop3Bh-1" value="&lt;font color=&quot;#ff8000&quot; style=&quot;font-size: 28px;&quot;&gt;Presentation Layer&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="60" y="320" width="520" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="gigBqYb2qnv4WfAop3Bh-2" value="&lt;font color=&quot;#ff8000&quot;&gt;Domain Object&lt;/font&gt;&lt;br style=&quot;font-size: 13px;&quot;&gt;(DTO)" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fontSize=13;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gigBqYb2qnv4WfAop3Bh-3" value="Order.java&lt;br style=&quot;font-size: 13px;&quot;&gt;Customer.java&lt;br&gt;Shipping.java&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;Address.java" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fontSize=13;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gigBqYb2qnv4WfAop3Bh-4" value="&lt;font color=&quot;#ff8000&quot;&gt;Persistence Layer&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fontSize=13;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="240" y="40" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gigBqYb2qnv4WfAop3Bh-5" value="OrderRepositoryImpl.java&lt;br style=&quot;font-size: 13px;&quot;&gt;OrderRepository.java" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fontSize=13;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="240" y="200" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gigBqYb2qnv4WfAop3Bh-6" value="&lt;font color=&quot;#ff8000&quot;&gt;Service Layer&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fontSize=13;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gigBqYb2qnv4WfAop3Bh-7" value="OrderServiceImpl.java&lt;br style=&quot;font-size: 13px;&quot;&gt;OrderService.java" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fontSize=13;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="440" y="200" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gigBqYb2qnv4WfAop3Bh-8" value="Controller" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fontSize=13;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="120" y="360" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gigBqYb2qnv4WfAop3Bh-9" value="CartController.java" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fontSize=13;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="120" y="520" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gigBqYb2qnv4WfAop3Bh-10" value="View" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fontSize=13;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="360" y="360" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gigBqYb2qnv4WfAop3Bh-11" value="?" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fontSize=13;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="360" y="520" width="160" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
