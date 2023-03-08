@@ -17,6 +17,7 @@ public class CartItem {
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+		this.updateTotalPrice();
 	}
 	public int getTotalPrice() {
 		return totalPrice;
@@ -67,7 +68,7 @@ public class CartItem {
 	}
 	
 	public void updateTotalPrice() {
-		int price = Integer.valueOf(car.getCprice());
+		int price = Integer.valueOf(this.car.getCprice());
 		totalPrice = price * this.quantity;
 		
 	}

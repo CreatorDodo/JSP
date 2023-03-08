@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <head>
 	<title>cars</title>
@@ -21,6 +22,15 @@
 				<p>${car.cprice}만원
 				<p>${car.ccate}
 				<p>${car.cdesc}
+				
+				
+				<p>
+				<form:form name="addForm" method="put" target="cart">
+				<a href="javascript:addToCart('/cart/add/${car.cid}')" class="btn btn-primary">제품주문 &raquo;</a>
+				<a href="<c:url value='/cart' />" class="btn btn-warning">장바구니 &raquo;</a>
+				<a href="<c:url value='/cars' />" class="btn btn-success">제품목록 &raquo;</a>
+				</form:form>
+				
 		</div>
 	</div>
 
@@ -28,4 +38,23 @@
 
 
 </body>
+
+<iframe name="cart" style="display: none;"></iframe>
+
+<script type="text/javascript">
+
+//구매하려는 제품을 장바구니로 보낼 때 JS를 이용하여 화면전환 없이 submit()을 실행한다.
+function addToCart(action) {
+	document.addForm.action = action;
+	document.addForm.submit();
+	alert("제품이 장바구니에 추가되었습니다.");
+}
+
+
+
+</script>
+
+
+
+
 </html>
