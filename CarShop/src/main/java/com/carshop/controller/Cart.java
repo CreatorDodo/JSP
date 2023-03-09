@@ -1,9 +1,11 @@
 package com.carshop.controller;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Cart {
+@SuppressWarnings("serial")
+public class Cart implements Serializable {
 	
 	private String cartId;
 	private Map<String, CartItem> cartItems;

@@ -1,6 +1,9 @@
 package com.carshop.controller;
 
-public class CartItem {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class CartItem implements Serializable {
 	
 	private CarDTO car;		//자동차
 	private int quantity;	//자동차 개수

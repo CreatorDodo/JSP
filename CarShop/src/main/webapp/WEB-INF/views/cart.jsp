@@ -39,7 +39,7 @@
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 			<form:form name="clearForm" method="delete">
 				<a href="javascript:clearCart()" class="btn btn-danger pull-left">삭제하기</a>
-				<a href="#" class="btn btn-success float-right"> 주문하기</a>
+				<a href="<c:url value="/order?cartId=${cartId}" />" class="btn btn-success float-right"> 주문하기</a>
 			</form:form>
 		</div>
 		<div style="padding-top: 50px">

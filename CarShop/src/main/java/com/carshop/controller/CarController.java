@@ -17,20 +17,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+@RequestMapping("/cars")
 @Controller
 public class CarController {
 	
 	@Autowired
 	private CarService carService;
 	
-	@RequestMapping("/cars")
+	@RequestMapping
 	public String CarList(Model model) {
 		List<CarDTO> list = carService.getAllCarList();
 		model.addAttribute("carList", list);
 		return "cars";
 	}
 
-	@GetMapping("/cars/{ccate}")
+	@GetMapping("/{ccate}")
 	public String requestCarsByCategory(@PathVariable("ccate") String carCategory, Model model) {
 		List<CarDTO> carsByCategory = carService.getCarListByCategory(carCategory);
 		model.addAttribute("carList", carsByCategory);
@@ -44,7 +45,7 @@ public class CarController {
 		return "car";
 	}
 	
-	@GetMapping("/admin/add")
+	@GetMapping("/add")
 	public String requestaddCarForm(@ModelAttribute("NewCar") CarDTO car) {
 		return "addCar";
 	}
@@ -52,7 +53,7 @@ public class CarController {
 	@Resource(name = "uploadPath")
 	private String uploadPath;
 	
-	@PostMapping("/admin/add")
+	@PostMapping("/add")
 	public String submitAddNewCar(@ModelAttribute("NewCar") CarDTO car, HttpServletRequest request) {
 		
 		MultipartFile carimage = car.getCarimage();
