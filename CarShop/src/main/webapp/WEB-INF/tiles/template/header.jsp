@@ -68,7 +68,7 @@
 <body class="text-center">
 <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top" aria-label="Second navbar example">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">CarShop</a>
+      <a class="navbar-brand" href="/">CarShop</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -81,8 +81,11 @@
           <li class="nav-item">
             <a class="nav-link" href="/cars">차량보기</a>
           </li>
-                    <li class="nav-item">
-            <a class="nav-link" href="/board">게시판</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/cart">장바구니</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/boards/list">게시판</a>
           </li>
                   <li class="nav-item dropdown">
           <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -96,7 +99,7 @@
           
         </ul>
         <sec:authorize access="isAnonymous()">
-        				<form action="/login" method="post">
+        				<form action="/cars/login" method="post">
 				 <input type="submit" class="btn btn-primary" value="login">
 				    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				</form>

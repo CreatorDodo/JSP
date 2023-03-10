@@ -9,7 +9,6 @@
 
 </head>
 <body class="text-center">
-<%@ include file="header.jsp" %>
 <!-- <div class="alert alert-dark" role="alert"> -->
 <!--   <h1>로그인</h1> -->
 <!-- </div> -->
@@ -49,6 +48,5 @@
 
 
 
-<%@ include file="footer.jsp" %>
 </body>
 </html>

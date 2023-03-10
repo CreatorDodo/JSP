@@ -8,7 +8,6 @@
 
 </head>
 <body class="text-center">
-<%@ include file="header.jsp" %>
 <div class="alert alert-dark" role="alert">
   환영합니다!
 </div>

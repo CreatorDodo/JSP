@@ -9,7 +9,6 @@
 
 </head>
 <body class="text-center">
-<%@ include file="header.jsp" %>
 <div class="alert alert-dark" role="alert">
 <div class="container"><h1>차량 등록</h1>
 

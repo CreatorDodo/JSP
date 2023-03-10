@@ -8,7 +8,6 @@
 
 </head>
 <body class="text-center">
-<%@ include file="header.jsp" %>
 <div class="alert alert-dark" role="alert">
 <div class="container"><h1>게시판(김도영)</h1></div>
 </div>

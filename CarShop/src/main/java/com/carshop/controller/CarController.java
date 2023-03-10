@@ -85,17 +85,17 @@ public class CarController {
 		model.addAttribute("addTitle", "신규 차량 등록");
 	}
 	
-	@GetMapping("/login")
+	@PostMapping("/login")
 	public String loginMethod() {
 		return "login";
 	}
 	
-	@GetMapping("//loginfailed")
+	@RequestMapping("/loginfailed")
 	public String loginfailedMethod() {
 		return "login";
 	}
 	
-	@GetMapping("/logout")
+	@RequestMapping("/logout")
 	public String logoutMethod() {
 		return "login";
 	}

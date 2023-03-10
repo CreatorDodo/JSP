@@ -3,7 +3,7 @@
 <!-- <a href="main.jsp" title="DaDaMall" target="_blank" class="w3-hover-text-light"> -->
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<footer class="w3-center w3-black w3-padding-48 w3-xlarge" style="margin-top: 300px;">
+<footer class="w3-center w3-black w3-padding-48 w3-xlarge" style="margin-top: 300px; width: 100%;">
 
   <a href="#" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
   <div class="w3-xlarge w3-section">
