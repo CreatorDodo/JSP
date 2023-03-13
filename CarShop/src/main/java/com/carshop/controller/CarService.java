@@ -12,4 +12,6 @@ public interface CarService {
 	
 	void setNewCar(CarDTO car);
 	
+	void deleteCar(String carId);
+	
 }

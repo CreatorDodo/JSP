@@ -33,6 +33,11 @@ public class CarServiceImpl implements CarService{
 	public void setNewCar(CarDTO car) {
 		carRepository.setNewCar(car);
 	}
+
+	@Override
+	public void deleteCar(String carId) {
+		carRepository.deleteCar(carId);
+	}
 	
 	
 }

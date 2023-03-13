@@ -22,9 +22,15 @@
 				
 				
 <%-- 				<img src='<c:url value="/resources/images/${car.getCarimage().getOriginalFilename()}"/>'/> --%>
-				<img src='<c:url value="/images/${car.getCarimage().getOriginalFilename()}"/>'/>
-				<h3>${car.cid}</h3>
-				<p>${car.cname}
+<%-- 				<img src='<c:url value="/images/${car.getCarimage().getOriginalFilename()}"/>'/> --%>
+
+
+
+							<img src="<c:url value="/resources/images/${car.cfilename}"/>"
+								style="width: 60%" />
+
+					<h3>${car.cid}</h3>
+					<p>${car.cname}
 				<p>${car.cprice}만원
 				<p><a href="/cars/car?id=${car.cid }" class="btn btn-Secondary" role="button">상세보기</a></p>
 			<%-- <a href='<c:url value="/car?id=${car.cid }"/>' class="btn btn-Secondary" role="button"> --%>

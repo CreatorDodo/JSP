@@ -72,4 +72,12 @@
         <beans:property name="definitions" value="/WEB-INF/tiles/tiles.xml"/>
     </beans:bean>
 	
+    <beans:bean id="dataSource" 
+                class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <beans:property name="url" value="jdbc:mysql://localhost:3306/difbfl4751?serverTimezone=UTC"/>
+        <beans:property name="username" value="difbfl4751"/>
+        <beans:property name="password" value="kdy3529216"/>
+    </beans:bean>
+	
 </beans:beans>

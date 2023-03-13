@@ -17,8 +17,13 @@
 
 	<div class="container">
 		<div class="row" align="center">
-				<h3>${car.cid}</h3>
-				<p>${car.cname}
+
+					<img src="<c:url value="/resources/images/${car.cfilename}"/>"
+						style="width: 60%" />
+
+
+			<h3>${car.cid}</h3>
+			<p>${car.cname}
 				<p>${car.cprice}만원
 				<p>${car.ccate}
 				<p>${car.cdesc}

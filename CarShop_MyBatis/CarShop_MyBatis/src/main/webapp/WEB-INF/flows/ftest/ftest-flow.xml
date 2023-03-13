@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!-- 모든 Web Flow는 <flow>로 시작하여 </flow>로 끝난다. -->
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+      http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+      
+	<!-- name : 해당 플로우의 name값으로 호출이 되어 플로우가 진행된다. -->
+	<!-- class : 매칭이 되는 클래스를 명목상 하나 연결한다. -->
+      <var name="ftest" class="com.carshop.domain.Ftest"/>
+
+<!-- <view-state> : Web Flow에서 보여줄 View(jsp)를 정의한다(id값은 View(jsp)페이지와 매핑된다.) -->
+	<view-state id="ftest1">
+		<transition on="ftest2" to="ftest2" />
+	</view-state>
+
+<!-- [view="ftest2.jsp"]처럼 View 파일의 이름을 직접 지정하면 해당 View(jsp)를 선택한다(생략하면 id값과 일치하는 View(jsp)로 자동선택 된다.) -->
+<!-- 만약 id 또는 view 에 지정한 파일이 폴더에 없는 경우에는 404 오류가 발생한다. -->
+	<view-state id="ftest2" view="ftest2.jsp">
+	<!-- <transition> : 페이지를 전환하는 역할을 한다. 따라서 to="ftest3"을 지정하면 <view-state id="ftest3">가 호출된다. -->
+		<transition on="ftest3" to="ftest3" />
+	</view-state>
+
+	<view-state id="ftest3">
+		<transition on="ftestCancelled" to="ftestCancelled" />
+	</view-state>
+	
+<!-- <end-state> : 페이지 흐름의 종료를 정의한다. -->
+	<end-state id="ftestCancelled" />
+	
+	<!-- 어느 흐름에서도 사용가능 -->
+	<global-transitions>
+		<transition on="cancel" to="ftestCancelled"></transition>
+	</global-transitions>
+      
+</flow>

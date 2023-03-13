@@ -12,7 +12,7 @@
 <div class="alert alert-dark" role="alert">
 <div class="container"><h1>차량 등록</h1>
 
-			<form:form modelAttribute="NewCar" action="/admin/add?${_csrf.parameterName}=${_csrf.token}" class="form-horizontal" enctype="multipart/form-data">
+			<form:form modelAttribute="NewCar" action="/cars/add?${_csrf.parameterName}=${_csrf.token}" class="form-horizontal" enctype="multipart/form-data">
 				<fieldset>
 				<legend>
 				${addTitle }
