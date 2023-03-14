@@ -131,6 +131,21 @@ public class CarRepositoryImpl implements CarRepository {
 		
 		template.update(sql, carId);
 	}
+
+
+	@Override
+	public void setUpdateCar(CarDTO car) {
+		
+		String sql = "UPDATE car SET cname=?, cprice=?, ccate=?, cdesc=?, cfilename=IFNULL(?, cfilename) where cid=?";
+		
+		template.update(sql, car.getCname(),
+								  car.getCprice(),
+								  car.getCcate(),
+								  car.getCdesc(),
+								  car.getCfilename(),
+								  car.getCid());
+		
+	}
 	
 	
 }

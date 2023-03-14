@@ -43,8 +43,11 @@
 						<tr>
 							<td><span class="cid">${car.cid}</span>-${car.cname}</td>
 							<td>${car.cprice}만원</td>
-							<td><a href="javascript:removeCar('${car.cid}')"
-								class="btn btn-danger btn-sm">삭제</a></td>
+							<td>
+							<p><a href="javascript:removeCar('${car.cid}')"
+								class="btn btn-danger btn-sm">삭제</a> 
+							<a href="/cars/update?cid=${car.cid}"
+								class="btn btn-primary btn-sm">수정</a></td>
 						</tr>
 					</c:forEach>
 				</form:form>

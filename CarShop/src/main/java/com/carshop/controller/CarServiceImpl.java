@@ -38,6 +38,11 @@ public class CarServiceImpl implements CarService{
 	public void deleteCar(String carId) {
 		carRepository.deleteCar(carId);
 	}
+
+	@Override
+	public void setUpdateCar(CarDTO car) {
+		carRepository.setUpdateCar(car);
+	}
 	
 	
 }

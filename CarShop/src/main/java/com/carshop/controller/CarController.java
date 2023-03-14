@@ -119,6 +119,39 @@ public class CarController {
 		return "redirect:/cars";
 	}
 	
+	@GetMapping("/update")
+	public String requestUpdateCarForm(@RequestParam("cid") String carId, Model model) {
+		
+		CarDTO carById = carService.getCarById(carId);
+		model.addAttribute("updateCar", carById);
+		
+		return "update";
+	}
+	
+	@PostMapping("/update")
+	public String submitUpdateCar(@ModelAttribute("updateCar") CarDTO car, HttpServletRequest request) {
+		
+		
+		MultipartFile carimage = car.getCarimage();
+		String fileName = carimage.getOriginalFilename();
+		
+		File saveFile = new File(uploadPath + "\\images", fileName);
+
+		
+		if (carimage != null && !carimage.isEmpty()) {
+			try {
+				carimage.transferTo(saveFile);
+				car.setCfilename(fileName);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+				
+				
+		carService.setUpdateCar(car);
+		return "redirect:/cars";
+	}
+	
 	@ModelAttribute
 	public void addAttributes(Model model) {
 		model.addAttribute("addTitle", "신규 차량 등록");

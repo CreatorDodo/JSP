@@ -14,4 +14,6 @@ public interface CarRepository {
 
 	void deleteCar(String carId);
 	
+	void setUpdateCar(CarDTO car);
+	
 }

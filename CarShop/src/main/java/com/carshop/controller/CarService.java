@@ -14,4 +14,6 @@ public interface CarService {
 	
 	void deleteCar(String carId);
 	
+	void setUpdateCar(CarDTO car);
+	
 }
