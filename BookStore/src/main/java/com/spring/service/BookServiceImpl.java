@@ -1,5 +1,6 @@
 package com.spring.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,29 @@ public class BookServiceImpl implements BookService {
 		
 		return null;
 		
+	}
+
+	@Override
+	public Map<String, Object> detail(Map<String, Object> map) {
+		return this.bookRepository.selectDetail(map);
+	}
+
+	@Override
+	public boolean update(Map<String, Object> map) {
+		int affectRowCount = this.bookRepository.update(map);
+		return affectRowCount == 1;
+		
+	}
+	
+	@Override
+	public List<Map<String, Object>> list(Map<String, Object> map) {
+		return this.bookRepository.selectList(map);
+	}
+
+	@Override
+	public boolean remove(Map<String, Object> map) {
+		int affectRowCount = this.bookRepository.delete(map);
+		return affectRowCount == 1;
 	}
 
 }

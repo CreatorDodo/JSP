@@ -15,5 +15,43 @@
 	]]>
 </insert>
 
+<!-- insert : MyBatis의 데이터 조회 태그 -->
+<!-- resultType : 조회한 데이터의 반환타입 -->
+<!-- 객체로 데이터를 전송하거나 조회할 수 있다. (ex. parameterType=”com.spring.controller.BookDTO” resultType=”com.spring.controller.BookDTO”) -->
+<select id="select_detail" parameterType="hashMap" resultType="hashMap">
+<![CDATA[
+	select * from book where book_id = #{bookId}
+	]]>
+</select>
+
+<update id="update" parameterType="hashMap">
+
+UPDATE book SET title=#{title}, category=#{category}, price=#{price} WHERE book_id = #{bookId}
+
+</update>
+
+<!-- <select id="select_list" parameterType="hashMap" resultType="hashMap"> -->
+<!-- <![CDATA[ -->
+<!-- 	select * from book ORDER BY insert_date DESC -->
+<!-- 	]]> -->
+<!-- </select> -->
+
+<delete id="delete" parameterType="hashMap">
+
+    DELETE FROM book WHERE book_id = #{bookId}
+    
+</delete>
+
+<select id="select_list" parameterType="hashMap" resultType="hashMap">
+<![CDATA[
+	select * from book WHERE 1=1
+	]]>
+    <if test="keyword != null and keyword != ''">  
+	and (title like CONCAT('%',#{keyword},'%') or category like CONCAT('%',#{keyword},'%'))  
+	</if>  
+	ORDER BY insert_date DESC  
+
+</select>
+
 </mapper>
 
