@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="car">
+
+<!-- insert : MyBatis의 데이터 입력 태그 -->
+<!-- id : insert 태그의 id -->
+<!-- parameterType : 데이터의 형태 -->
+<!-- useGeneratedKeys & keyProperty : useGeneratedKeys를 true로 설정하면 MyBatis에서 insert 쿼리 실행 후 생성된 PK를 keyProperty 속성에 넣어준다. -->
+<insert id="insert" parameterType="com.carshop.controller.CarDTO" useGeneratedKeys="true" keyProperty="cid" >
+<![CDATA[
+	insert into car
+	(cid, cname, cprice, ccate, cdesc, cfilename)
+	values
+	(#{cid}, #{cname}, #{cprice}, #{ccate}, #{cdesc}, #{cfilename})
+	]]>
+</insert>
+
+<!-- insert : MyBatis의 데이터 조회 태그 -->
+<!-- resultType : 조회한 데이터의 반환타입 -->
+<!-- 객체로 데이터를 전송하거나 조회할 수 있다. (ex. parameterType=”com.spring.controller.BookDTO” resultType=”com.spring.controller.BookDTO”) -->
+<select id="select_detail" parameterType="String" resultType="com.carshop.controller.CarDTO">
+<![CDATA[
+	select * from car where cid = #{carid}
+	]]>
+</select>
+
+<update id="update" parameterType="com.carshop.controller.CarDTO">
+
+UPDATE car SET cname=#{cname}, cprice=#{cprice}, ccate=#{ccate}, cdesc=#{cdesc}, cfilename=IFNULL(#{cfilename}, cfilename) WHERE cid = #{cid}
+
+</update>
+
+<!-- <select id="select_list" parameterType="com.carshop.controller.CarDTO" resultType="com.carshop.controller.CarDTO"> -->
+<!-- <![CDATA[ -->
+<!-- 	select * from car ORDER BY cprice DESC -->
+<!-- 	]]> -->
+<!-- </select> -->
+
+<delete id="delete" parameterType="String">
+
+    DELETE FROM car WHERE cid = #{carId}
+    
+</delete>
+
+<!-- parameterType(데이터 전송)을 설정하지 않아서 데이터를 넣지 않고 resultType(결과값)만 받는다. -->
+<select id="select_list" resultType="com.carshop.controller.CarDTO">
+<![CDATA[
+	select * from car ORDER BY cprice DESC  
+	]]>
+<!--     <if test="keyword != null and keyword != ''">   -->
+<!-- 	and (cid like CONCAT('%',#{keyword},'%') or ccate like CONCAT('%',#{keyword},'%'))   -->
+<!-- 	</if>   -->
+</select>
+
+</mapper>
+

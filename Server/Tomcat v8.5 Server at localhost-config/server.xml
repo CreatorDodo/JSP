@@ -153,7 +153,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       
-      <Context docBase="BookStore" path="/" reloadable="true" source="org.eclipse.jst.jee.server:BookStore"/></Host>
+      <Context docBase="CarShop_MyBatis" path="/" reloadable="true" source="org.eclipse.jst.jee.server:CarShop_MyBatis"/></Host>
     </Engine>
   </Service>
 </Server>

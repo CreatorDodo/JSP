@@ -32,7 +32,7 @@
 	<!-- 업로드 패스 설정 -->
 	<beans:bean class="java.lang.String" id="uploadPath">
 		<beans:constructor-arg
-			value="C:\develop\JSP\CarShop\src\main\webapp\resources" /> <!-- 로컬에서 작업할 때 -->
+			value="C:\develop\JSP\CarShop_MyBatis\CarShop_MyBatis\src\main\webapp\resources" /> <!-- 로컬에서 작업할 때 -->
 	</beans:bean>
 <!-- 		    value="C:\develop\JSP\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\CarShop\resources" /> 호스팅 할 때 -->
 

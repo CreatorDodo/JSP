@@ -10,6 +10,16 @@ public class CarDTO implements Serializable {
 	
 	private String cid, cname, cprice, ccate, cdesc;
 	private MultipartFile carimage;
+	private String cfilename;
+	
+	public String getCfilename() {
+		return cfilename;
+	}
+	
+	public void setCfilename(String cfilename) {
+		this.cfilename = cfilename;
+	}
+	
 	public String getCid() {
 		return cid;
 	}
@@ -47,18 +57,19 @@ public class CarDTO implements Serializable {
 		this.carimage = carimage;
 	}
 	
-	public CarDTO(String cid, String cname, String cprice, String ccate, String cdesc, MultipartFile carimage) {
+	public CarDTO(String cid, String cname, String cprice, String ccate, String cdesc, MultipartFile carimage, String cfilename) {
 		this.cid = cid;
 		this.cname = cname;
 		this.cprice = cprice;
 		this.ccate = ccate;
 		this.cdesc = cdesc;
-		this.carimage = carimage;
+		this.cfilename = cfilename;
 	}
 	
 	public CarDTO() {
 		super();
 	}
+
 	
 	
 

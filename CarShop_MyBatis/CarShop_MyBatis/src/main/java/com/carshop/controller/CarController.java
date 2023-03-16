@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 @RequestMapping("/cars")
@@ -25,7 +26,7 @@ public class CarController {
 	private CarService carService;
 	
 	@RequestMapping
-	public String CarList(Model model) {
+	public String CarList(Model model, CarDTO car) {
 		List<CarDTO> list = carService.getAllCarList();
 		model.addAttribute("carList", list);
 		return "cars";
@@ -69,6 +70,7 @@ public class CarController {
 		if (carimage != null && !carimage.isEmpty()) {
 			try {
 				carimage.transferTo(saveFile);
+				car.setCfilename(saveName);
 			} catch (Exception e) {
 //				throw new RuntimeException("차량 이미지 업로드가 실패했습니다.");
 				e.printStackTrace();
@@ -77,6 +79,50 @@ public class CarController {
 				
 				
 		carService.setNewCar(car);
+		return "redirect:/cars";
+	}
+	
+	@RequestMapping("/product")
+	public String product(Model model) {
+		List<CarDTO> list = carService.getAllCarList();
+		model.addAttribute("carList", list);
+		return "product";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/removeProduct")
+	public void ajaxremoveProduct(@RequestParam String carId) {
+			carService.remove(carId);
+	}
+	
+	@GetMapping("/update")
+	public String requestUpdateCarForm(@RequestParam("cid") String carId, Model model) {
+		
+		CarDTO carById = carService.getCarById(carId);
+		model.addAttribute("updateCar", carById);
+		
+		return "update";
+	}
+	
+	@PostMapping("/update")
+	public String submitUpdateCar(@ModelAttribute("updateCar") CarDTO car, HttpServletRequest request) {
+		
+		MultipartFile carimage = car.getCarimage();
+		
+		if (carimage != null && !carimage.isEmpty()) {
+			try {
+
+				String fileName = carimage.getOriginalFilename();
+				File saveFile = new File(uploadPath + "\\images", fileName);
+				carimage.transferTo(saveFile);
+				car.setCfilename(fileName);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+				
+				
+		carService.update(car);
 		return "redirect:/cars";
 	}
 	

@@ -33,6 +33,19 @@ public class CarServiceImpl implements CarService{
 	public void setNewCar(CarDTO car) {
 		carRepository.setNewCar(car);
 	}
+
+	@Override
+	public boolean update(CarDTO car) {
+		int affectRowCount = this.carRepository.setUpdateCar(car);
+		return affectRowCount == 1;
+		
+	}
+	
+	@Override
+	public boolean remove(String carId) {
+		int affectRowCount = this.carRepository.delete(carId);
+		return affectRowCount == 1;
+	}
 	
 	
 }

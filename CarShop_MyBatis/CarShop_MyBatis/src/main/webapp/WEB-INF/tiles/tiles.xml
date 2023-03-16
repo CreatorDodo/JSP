@@ -87,6 +87,19 @@
 
 </definition>
 
+<definition name="product" extends="base-Template">
+
+	<put-attribute name="title" value="제품리스트"/>
+	<put-attribute name="content" value="/WEB-INF/views/product.jsp"/>
+
+</definition>
+
+<definition name="update" extends="base-Template">
+
+	<put-attribute name="title" value="제품수정"/>
+	<put-attribute name="content" value="/WEB-INF/views/update.jsp"/>
+
+</definition>
 
 </tiles-definitions>
 
