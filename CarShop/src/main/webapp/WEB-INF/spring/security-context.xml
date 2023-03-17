@@ -1,45 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans
-	xmlns="http://www.springframework.org/schema/security"
-	xmlns:beans="http://www.springframework.org/schema/beans"
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security.xsd">
-	
-	
-<!-- 	<http auto-config="true" use-expressions="true"> 기본 로그인 창 사용시 -->
-	<http use-expressions="true">
 
-	<intercept-url pattern="/cars/add" access="hasAuthority('ROLE_ADMIN')" /> <!-- ADMIN만 허용 -->
-	<intercept-url pattern="/manager" access="hasRole('ROLE_MANAGER')" /> <!-- MANAGER만 허용 -->
-	<intercept-url pattern="/member" access="isAuthenticated()" /> <!-- 로그인한 사람만 허용 -->
-	<intercept-url pattern="/**" access="permitAll" /> <!-- 전체 허용 -->
+
+<!-- 각각의  interceptr-url, form-login, logout 은  내부적으로 Filter를 만들어 사용한다. -->
+<!-- 그래서 web.xml에서 이 모든걸 엮어줄 FilterChaing을 따로 설정해준다. -->
+<!-- web.xml에서 사용하는 FilterChain의 대한 설정부분이다. -->
+	<security:http use-expressions="true">
+<!-- 	<http auto-config="true" use-expressions="true"> 기본 로그인 창 사용시 -->
+	<security:intercept-url pattern="/cars/add/**" access="hasAuthority('ROLE_ADMIN')" /> <!-- ADMIN만 허용 -->
+	<security:intercept-url pattern="/manager" access="hasRole('ROLE_MANAGER')" /> <!-- MANAGER만 허용 -->
+	<security:intercept-url pattern="/member" access="isAuthenticated()" /> <!-- 로그인한 사람만 허용 -->
+	<security:intercept-url pattern="/**" access="permitAll" /> <!-- 전체 허용 -->
 	
-	<form-login login-page="/cars/login"
+	<security:form-login login-page="/cars/login"
 			default-target-url="/"
 			authentication-failure-url="/cars/loginfailed"
 			username-parameter="username"
 			password-parameter="password"/>
 			
-	<csrf/>
+	<security:csrf/>
 	
-	<logout logout-success-url="/cars/logout"/>
+	<security:logout logout-success-url="/cars/logout"/>
 	
-	</http>
+	</security:http>
 	
-	<authentication-manager>
-		<authentication-provider>
-		<user-service>
+<!-- 	<authentication-manager> -->
+<!-- 		<authentication-provider> -->
+<!-- 		<user-service> -->
+<!-- 	<user name="admin" password="{noop}admin" authorities="ROLE_ADMIN, ROLE_USER" /> -->
+<!-- 	<user name="manager" password="{noop}manager" authorities="ROLE_MANAGER, ROLE_USER" /> -->
+<!-- 	<user name="guest" password="{noop}guest" authorities="ROLE_USER" /> -->
+<!-- 		</user-service> -->
+<!-- 		</authentication-provider> -->
+<!-- 	</authentication-manager> -->
+	
+	<!-- 암호화를 위한 passwordEncoder -->
+<bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 
-	<user name="admin" password="{noop}admin" authorities="ROLE_ADMIN, ROLE_USER" />
-	<user name="manager" password="{noop}manager" authorities="ROLE_MANAGER, ROLE_USER" />
-	<user name="guest" password="{noop}guest" authorities="ROLE_USER" />
-		
-		
-		
-		</user-service>
-		</authentication-provider>
-	</authentication-manager>
-</beans:beans>
+	<!-- DB연동은 data-source만 지정해주면 된다 -->
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider>
+		 <security:jdbc-user-service data-source-ref="dataSource" /> 
+    		<security:password-encoder ref="passwordEncoder"></security:password-encoder>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	
+	<!-- 이것만 있으면  JDBC 코드 (Connection, Statement,ResultSet)로   DB연결 가능 -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver" /> 
+		<property name="url" value="jdbc:mysql://localhost:3306/difbfl4751?characterEncoding=utf8" />
+		<property name="username" value="difbfl4751" />
+		<property name="password" value="kdy3529216" />
+		<property name="defaultAutoCommit" value="true" />
+	</bean>
+	
+</beans>
