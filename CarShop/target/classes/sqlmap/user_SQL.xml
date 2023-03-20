@@ -8,11 +8,36 @@
 <!-- useGeneratedKeys & keyProperty : useGeneratedKeys를 true로 설정하면 MyBatis에서 insert 쿼리 실행 후 생성된 PK를 keyProperty 속성에 넣어준다. -->
 <insert id="insert" parameterType="com.carshop.users.User" useGeneratedKeys="true" keyProperty="username" >
 <![CDATA[
-	insert into users
-	(username, password, enabled)
-	values
-	(#{username}, #{password}, 1)
+	INSERT INTO users
+	(username, password, authority, enabled, uname, uemail)
+	VALUES
+	(#{username}, #{password}, "USER", 1, #{uname}, #{uemail})
 	]]>
 </insert>
+
+<select id="select_list" resultType="com.carshop.users.User">
+<![CDATA[
+	SELECT * FROM users ORDER BY uno DESC  
+	]]>
+</select>
+
+<delete id="delete" parameterType="String">
+
+    DELETE FROM users WHERE username = #{username}
+    
+</delete>
+
+<update id="update_Auth" parameterType="HashMap">
+
+UPDATE users SET authority=#{authority} WHERE username = #{username}
+
+</update>
+
+<update id="update_Enabled" parameterType="HashMap">
+
+UPDATE users SET enabled=#{enabled} WHERE username = #{username}
+
+</update>
+
 
 </mapper>

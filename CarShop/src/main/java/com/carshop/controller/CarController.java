@@ -1,7 +1,6 @@
 package com.carshop.controller;
 
 import java.io.File;
-import java.sql.ResultSet;
 import java.util.List;
 
 import javax.annotation.Resource;

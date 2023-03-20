@@ -101,5 +101,20 @@
 
 </definition>
 
+<definition name="users/joinform" extends="base-Template">
+
+	<put-attribute name="title" value="회원가입"/>
+	<put-attribute name="content" value="/WEB-INF/views/users/joinform.jsp"/>
+
+</definition>
+
+
+<definition name="users/list" extends="base-Template">
+
+	<put-attribute name="title" value="회원목록"/>
+	<put-attribute name="content" value="/WEB-INF/views/users/list.jsp"/>
+
+</definition>
+
 </tiles-definitions>
 

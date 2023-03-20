@@ -96,11 +96,18 @@
             <li><a class="dropdown-item" href="#">로그아웃</a></li>
           </ul>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/users/join">회원가입</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">회원탈퇴</a>
+          </li>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<li class="nav-item dropdown">
 							<button class="btn btn-dark dropdown-toggle"
 								data-bs-toggle="dropdown" aria-expanded="false">관리자메뉴</button>
 							<ul class="dropdown-menu dropdown-menu-dark">
+							<li><a class="dropdown-item" href="/users/list">회원목록</a></li>
 								<li><a class="dropdown-item" href="/cars/add">제품등록</a></li>
 								<li><a class="dropdown-item" href="/cars/product">제품관리</a></li>
 							</ul>

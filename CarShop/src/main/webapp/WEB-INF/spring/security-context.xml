@@ -42,27 +42,35 @@
 <!-- 	</authentication-manager> -->
 	
 	<!-- 암호화를 위한 passwordEncoder -->
-<bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+<bean id="bcryptpasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 
 	<!-- DB연동은 data-source만 지정해주면 된다 -->
+<!-- 	로그인시 입력한 아이디(username), 암호(password)의 일치 여부를 따로 클래스로 만들어 구현하는 방법도 있으나 -->
+<!-- 	아래와 같이 비교 인증 절차를 Spring Security 에 일임하는 것이 편하다. -->
 	<security:authentication-manager alias="authenticationManager">
 		<security:authentication-provider>
-		 <security:jdbc-user-service data-source-ref="dataSource" /> 
-    		<security:password-encoder ref="passwordEncoder"></security:password-encoder>
+		<security:password-encoder hash="bcrypt"/>
+		 <security:jdbc-user-service data-source-ref="dataSource" 
+		 users-by-username-query="SELECT username, password, enabled FROM users WHERE username=?"
+		 authorities-by-username-query="SELECT username, authority FROM users WHERE username=?"
+		 /> 
+    		<security:password-encoder ref="bcryptpasswordEncoder"></security:password-encoder>
 		</security:authentication-provider>
 	</security:authentication-manager>
 	
 	
+
 	<!-- 이것만 있으면  JDBC 코드 (Connection, Statement,ResultSet)로   DB연결 가능 -->
-	<bean id="dataSource"
-		class="org.apache.commons.dbcp2.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName"
-			value="com.mysql.cj.jdbc.Driver" /> 
-		<property name="url" value="jdbc:mysql://localhost:3306/difbfl4751?characterEncoding=utf8" />
-		<property name="username" value="difbfl4751" />
-		<property name="password" value="kdy3529216" />
-		<property name="defaultAutoCommit" value="true" />
-	</bean>
+<!-- 	이미 root-context.xml에서 연결시켜놓았기 때문에 주석처리해도 된다. -->
+<!-- 	<bean id="dataSource" -->
+<!-- 		class="org.apache.commons.dbcp2.BasicDataSource" -->
+<!-- 		destroy-method="close"> -->
+<!-- 		<property name="driverClassName" -->
+<!-- 			value="com.mysql.cj.jdbc.Driver" />  -->
+<!-- 		<property name="url" value="jdbc:mysql://localhost:3306/difbfl4751?characterEncoding=utf8" /> -->
+<!-- 		<property name="username" value="difbfl4751" /> -->
+<!-- 		<property name="password" value="kdy3529216" /> -->
+<!-- 		<property name="defaultAutoCommit" value="true" /> -->
+<!-- 	</bean> -->
 	
 </beans>
