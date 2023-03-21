@@ -15,6 +15,7 @@
 	<security:http use-expressions="true">
 <!-- 	<http auto-config="true" use-expressions="true"> 기본 로그인 창 사용시 -->
 	<security:intercept-url pattern="/cars/add/**" access="hasAuthority('ROLE_ADMIN')" /> <!-- ADMIN만 허용 -->
+	<security:intercept-url pattern="/boards/**" access="isAuthenticated()" /> <!-- ADMIN만 허용 -->
 	<security:intercept-url pattern="/manager" access="hasRole('ROLE_MANAGER')" /> <!-- MANAGER만 허용 -->
 	<security:intercept-url pattern="/member" access="isAuthenticated()" /> <!-- 로그인한 사람만 허용 -->
 	<security:intercept-url pattern="/**" access="permitAll" /> <!-- 전체 허용 -->

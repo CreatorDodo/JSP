@@ -65,7 +65,8 @@
 
 
 </head>
-<body class="text-center">
+<!-- <body class="text-center"> -->
+<body>
 <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top" aria-label="Second navbar example">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">CarShop</a>

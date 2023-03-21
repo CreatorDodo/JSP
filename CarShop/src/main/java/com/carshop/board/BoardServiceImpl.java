@@ -12,9 +12,32 @@ public class BoardServiceImpl implements BoardService{
 	private BoardRepository boardRepository;
 	
 	@Override
-	public List<BoardDTO> getAllBoardList() {
+	public List<Board> getAllBoardList() {	
 		return boardRepository.getAllBoardList();
 	}
+
+	@Override
+	public Board getBoardById(String bid) {
+		
+		Board boardById = boardRepository.getBoardById(bid);
+		
+		return boardById;
+	}
+
+	@Override
+	public void setNewBoard(Board board) {
+		boardRepository.setNewBoard(board);
+	}
+
+//	@Override
+//	public void deleteCar(String board) {
+//		boardRepository.setNewBoard(board);
+//	}
+//
+//	@Override
+//	public void setUpdateCar(CarDTO car) {
+//		carRepository.setUpdateCar(car);
+//	}
 
 	
 	

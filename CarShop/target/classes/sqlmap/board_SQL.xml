@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+
+	<insert id="insert"
+		parameterType="com.carshop.board.Board" useGeneratedKeys="true" keyProperty="bid">
+		<![CDATA[
+			INSERT INTO board
+			(btitle, bcontent, bwriter) VALUES (#{btitle}, #{bcontent}, #{bwriter})
+		]]>
+	</insert>
+
+<select id="select_detail" parameterType="String" resultType="com.carshop.board.Board">
+<![CDATA[
+	SELECT * FROM board WHERE bid = #{bid}
+	]]>
+</select>
+
+<update id="update" parameterType="com.carshop.controller.CarDTO">
+
+UPDATE car SET cname=#{cname}, cprice=#{cprice}, ccate=#{ccate}, cdesc=#{cdesc}, cfilename=IFNULL(#{cfilename}, cfilename) WHERE cid = #{cid}
+
+</update>
+
+<delete id="delete" parameterType="String">
+
+    DELETE FROM car WHERE cid = #{carId}
+    
+</delete>
+
+<select id="select_list" resultType="com.carshop.board.Board">
+<![CDATA[
+	SELECT * FROM board ORDER BY bid DESC
+	]]>
+</select>
+
+</mapper>
+

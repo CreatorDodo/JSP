@@ -4,6 +4,13 @@ import java.util.List;
 
 public interface BoardRepository {
 
-	List<BoardDTO> getAllBoardList();
+	void setNewBoard(Board board);
+
+	List<Board> getAllBoardList();
+
+	Board getBoardById(String bId);
+	
+	
+	
 	
 }

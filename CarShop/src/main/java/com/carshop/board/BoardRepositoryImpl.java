@@ -1,29 +1,42 @@
 package com.carshop.board;
 
-import java.util.*;
+import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class BoardRepositoryImpl implements BoardRepository {
 
-	private List<BoardDTO> listOfBoards = new ArrayList<BoardDTO>();
-	
-	public BoardRepositoryImpl() {
-		BoardDTO board1 = new BoardDTO("가입인사", "가입했어요.", "하나", "2023/02/27");
-		BoardDTO board2 = new BoardDTO("등록", "등록했어요.", "두리", "2023/02/22");
-		BoardDTO board3 = new BoardDTO("등업", "등업부탁해요.", "석삼", "2023/02/21");
-		
-		listOfBoards.add(board1);
-		listOfBoards.add(board2);
-		listOfBoards.add(board3);
-		
-	}
+
+	@Autowired
+	SqlSessionTemplate sqlSessionTemplate;
 	
 	@Override
-	public List<BoardDTO> getAllBoardList() {
-
-		return listOfBoards;
+	public List<Board> getAllBoardList() {		
+		return this.sqlSessionTemplate.selectList("board.select_list");
 	}
+
+	@Override
+	public Board getBoardById(String bId) {
+		return this.sqlSessionTemplate.selectOne("board.select_detail", bId);
+	}
+
+	@Override
+	public void setNewBoard(Board board) {
+		this.sqlSessionTemplate.insert("board.insert", board);
+	}
+
+//	@Override
+//	public void deleteCar(String carId) {
+//		this.sqlSessionTemplate.delete("car.delete", carId);
+//
+//	}
+//
+//	@Override
+//	public void setUpdateCar(CarDTO car) {
+//		this.sqlSessionTemplate.update("car.update", car);
+//	}
 
 }

@@ -116,5 +116,26 @@
 
 </definition>
 
+<definition name="boards/addBoard" extends="base-Template">
+
+	<put-attribute name="title" value="게시판 등록"/>
+	<put-attribute name="content" value="/WEB-INF/views/boards/addBoard.jsp"/>
+
+</definition>
+
+<definition name="boards/list" extends="base-Template">
+
+	<put-attribute name="title" value="게시판"/>
+	<put-attribute name="content" value="/WEB-INF/views/boards/list.jsp"/>
+
+</definition>
+
+<definition name="boards/board" extends="base-Template">
+
+	<put-attribute name="title" value="글 상세보기"/>
+	<put-attribute name="content" value="/WEB-INF/views/boards/board.jsp"/>
+
+</definition>
+
 </tiles-definitions>
 
