@@ -39,5 +39,10 @@ UPDATE users SET enabled=#{enabled} WHERE username = #{username}
 
 </update>
 
+<select id="select_email" parameterType="String" resultType="com.carshop.users.User">
+<![CDATA[
+	SELECT * FROM users WHERE username = #{email}
+	]]>
+</select>
 
 </mapper>

@@ -14,5 +14,7 @@ public interface UserService {
 	void updateAuth(Map<String, Object> auth);
 
 	void updateEnabled(Map<String, Object> enabled);
+
+	User existUsername(String email);
 	
 }

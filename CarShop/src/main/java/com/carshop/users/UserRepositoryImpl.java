@@ -41,4 +41,10 @@ public class UserRepositoryImpl implements UserRepository {
 		
 	}
 
+	@Override
+	public User existUsername(String email) {
+		return this.sqlSessionTemplate.selectOne("user.select_email", email);
+		
+	}
+
 }

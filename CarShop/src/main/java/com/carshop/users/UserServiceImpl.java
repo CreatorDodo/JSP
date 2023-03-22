@@ -40,5 +40,11 @@ public class UserServiceImpl implements UserService {
 		userRepository.updateEnabled(enabled);
 		
 	}
+	
+	@Override
+	public User existUsername(String email) {
+		return userRepository.existUsername(email);
+		
+	}
 
 }
