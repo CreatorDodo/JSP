@@ -21,7 +21,6 @@
 					password : <form:input path="password" type="password" class="form-control" />
 					name : <form:input path="uname" class="form-control" />
 					email : <form:input path="uemail" class="form-control" />
-					
 				<input type="submit" class="btn btn-primary" value="회원가입">
 
 

@@ -9,6 +9,14 @@
 			(btitle, bcontent, bwriter) VALUES (#{btitle}, #{bcontent}, #{bwriter})
 		]]>
 	</insert>
+	
+	<insert id="insert_reply"
+		parameterType="hashMap" useGeneratedKeys="true" keyProperty="bid">
+		<![CDATA[
+			INSERT INTO board
+			(bpid, bcontent, bwriter) VALUES (#{bid}, #{bcontent}, #{bwriter})
+		]]>
+	</insert>
 
 <select id="select_detail" parameterType="String" resultType="com.carshop.board.Board">
 <![CDATA[
@@ -16,23 +24,41 @@
 	]]>
 </select>
 
-<update id="update" parameterType="com.carshop.controller.CarDTO">
+<!-- <delete id="delete" parameterType="String"> -->
 
-UPDATE car SET cname=#{cname}, cprice=#{cprice}, ccate=#{ccate}, cdesc=#{cdesc}, cfilename=IFNULL(#{cfilename}, cfilename) WHERE cid = #{cid}
-
-</update>
-
-<delete id="delete" parameterType="String">
-
-    DELETE FROM car WHERE cid = #{carId}
+<!--     DELETE FROM car WHERE cid = #{carId} -->
     
-</delete>
+<!-- </delete> -->
 
 <select id="select_list" resultType="com.carshop.board.Board">
 <![CDATA[
-	SELECT * FROM board ORDER BY bid DESC
+	SELECT * FROM board WHERE bpid IS NULL ORDER BY bid DESC
 	]]>
 </select>
+
+<select id="select_reply" resultType="com.carshop.board.Board">
+<![CDATA[
+	SELECT * FROM board WHERE bpid=#{bid} ORDER BY bid DESC
+	]]>
+</select>
+
+<update id="update_view" parameterType="hashMap">
+<![CDATA[
+UPDATE board SET bview = bview + 1 WHERE bid = #{bid}
+	]]>
+</update>
+
+<update id="update_like" parameterType="hashMap">
+<![CDATA[
+UPDATE board SET blike = blike + 1 WHERE bid = #{bid}
+	]]>
+</update>
+
+<update id="update_hate" parameterType="hashMap">
+<![CDATA[
+UPDATE board SET bhate = bhate + 1 WHERE bid = #{bid}
+	]]>
+</update>
 
 </mapper>
 

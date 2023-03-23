@@ -1,6 +1,7 @@
 package com.carshop.board;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,15 +30,21 @@ public class BoardServiceImpl implements BoardService{
 		boardRepository.setNewBoard(board);
 	}
 
-//	@Override
-//	public void deleteCar(String board) {
-//		boardRepository.setNewBoard(board);
-//	}
-//
-//	@Override
-//	public void setUpdateCar(CarDTO car) {
-//		carRepository.setUpdateCar(car);
-//	}
+	@Override
+	public void replyNewBoard(Map map) {
+		boardRepository.replyNewBoard(map);
+		
+	}
+
+	@Override
+	public List<Board> getReplyById(String bid) {
+		return boardRepository.getReplyById(bid);
+	}
+
+	@Override
+	public void checkBoard(Map<String, Object> map) {
+		boardRepository.checkBoard(map);
+	}
 
 	
 	

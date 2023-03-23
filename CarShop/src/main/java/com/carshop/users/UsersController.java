@@ -24,9 +24,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.carshop.mail.MailService;
+
 @RequestMapping("users")
 @Controller
 public class UsersController {
+	
+	@Autowired
+	private MailService mailService;
 	
 	@Autowired
 	UserService userService;
@@ -47,6 +52,13 @@ public class UsersController {
 		String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
 		user.setPassword(encodedPassword);
 		userService.setNewUser(user);
+		
+		String to = user.getUemail();
+		String subject = user.getUname() + "님 환영합니다[CarShop]";
+		String body = "회원가입이 완료되었습니다.";
+		
+		mailService.sendMail(to, subject, body);
+		
 		return "login";
 	}
 

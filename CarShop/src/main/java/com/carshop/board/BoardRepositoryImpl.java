@@ -1,6 +1,7 @@
 package com.carshop.board;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,15 +29,32 @@ public class BoardRepositoryImpl implements BoardRepository {
 		this.sqlSessionTemplate.insert("board.insert", board);
 	}
 
-//	@Override
-//	public void deleteCar(String carId) {
-//		this.sqlSessionTemplate.delete("car.delete", carId);
-//
-//	}
-//
-//	@Override
-//	public void setUpdateCar(CarDTO car) {
-//		this.sqlSessionTemplate.update("car.update", car);
-//	}
+	@Override
+	public void replyNewBoard(Map map) {
+		this.sqlSessionTemplate.insert("board.insert_reply", map);
+	}
+
+	@Override
+	public List<Board> getReplyById(String bid) {
+		return this.sqlSessionTemplate.selectList("board.select_reply", bid);
+	}
+
+	@Override
+	public void checkBoard(Map<String, Object> map) {
+		String check = (String) map.get("check");
+		
+		if(check.equals("blike")) {
+			this.sqlSessionTemplate.update("board.update_like", map);
+		}else if(check.equals("bview")) {
+			this.sqlSessionTemplate.update("board.update_view", map);
+		}else {
+			this.sqlSessionTemplate.update("board.update_hate", map);
+		}
+		
+
+		
+	}
+	
+	
 
 }
