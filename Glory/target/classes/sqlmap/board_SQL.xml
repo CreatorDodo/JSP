@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+
+	<insert id="insert"
+		parameterType="com.glory.board.Board" useGeneratedKeys="true" keyProperty="bid">
+		<![CDATA[
+			INSERT INTO gloryboard
+			(btitle, bcontent, bcate, bwriter) VALUES (#{btitle}, #{bcontent}, #{bcate}, #{bwriter})
+		]]>
+	</insert>
+	
+	<insert id="insert_reply"
+		parameterType="hashMap" useGeneratedKeys="true" keyProperty="bid">
+		<![CDATA[
+			INSERT INTO gloryboard
+			(bpid, bcontent, bwriter) VALUES (#{bid}, #{bcontent}, #{bwriter})
+		]]>
+	</insert>
+
+<select id="select_detail" parameterType="String" resultType="com.glory.board.Board">
+<![CDATA[
+	SELECT * FROM gloryboard WHERE bid = #{bid}
+	]]>
+</select>
+
+<select id="select_list" resultType="com.glory.board.Board">
+<![CDATA[
+	SELECT * FROM gloryboard WHERE bpid IS NULL ORDER BY bid DESC
+	]]>
+</select>
+
+<select id="select_reply" resultType="com.glory.board.Board">
+<![CDATA[
+	SELECT * FROM gloryboard WHERE bpid=#{bid} ORDER BY bid DESC
+	]]>
+</select>
+
+<!-- <update id="update_view" parameterType="hashMap"> -->
+<!-- <![CDATA[ -->
+<!-- UPDATE board SET bview = bview + 1 WHERE bid = #{bid} -->
+<!-- 	]]> -->
+<!-- </update> -->
+
+<!-- <update id="update_like" parameterType="hashMap"> -->
+<!-- <![CDATA[ -->
+<!-- UPDATE board SET blike = blike + 1 WHERE bid = #{bid} -->
+<!-- 	]]> -->
+<!-- </update> -->
+
+<!-- <update id="update_hate" parameterType="hashMap"> -->
+<!-- <![CDATA[ -->
+<!-- UPDATE board SET bhate = bhate + 1 WHERE bid = #{bid} -->
+<!-- 	]]> -->
+<!-- </update> -->
+
+</mapper>

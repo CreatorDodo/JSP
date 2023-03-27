@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice">
+
+	<insert id="insert"
+		parameterType="com.glory.notice.Notice" useGeneratedKeys="true" keyProperty="nid">
+		<![CDATA[
+			INSERT INTO glorynotice
+			(ntitle, ncontent, ncate, nwriter) VALUES (#{ntitle}, #{ncontent}, #{ncate}, #{nwriter})
+		]]>
+	</insert>
+
+	<select id="select_detail" parameterType="String" resultType="com.glory.notice.Notice">
+	<![CDATA[
+		SELECT * FROM glorynotice WHERE nid = #{nid}
+		]]>
+	</select>
+
+	<select id="select_list" resultType="com.glory.notice.Notice">
+	<![CDATA[
+		SELECT * FROM glorynotice ORDER BY nid DESC
+		]]>
+	</select>
+
+</mapper>
