@@ -6,7 +6,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 <head>
-<title>게시판 등록</title>
+<title>공지사항</title>
 
 </head>
 <body class="text-center">
@@ -18,13 +18,13 @@
 			<div class="container-fluid">
 				<div class="row mb-2">
 					<div class="col-sm-6">
-						<h1 class="m-0">게시판 등록</h1>
+						<h1 class="m-0">공지사항</h1>
 					</div>
 					<!-- /.col -->
 					<div class="col-sm-6">
 						<ol class="breadcrumb float-sm-right">
 							<li class="breadcrumb-item"><a href="#">홈</a></li>
-							<li class="breadcrumb-item active">게시판 등록</li>
+							<li class="breadcrumb-item active">공지사항</li>
 						</ol>
 					</div>
 					<!-- /.col -->
@@ -45,39 +45,37 @@
 
 <!------------------------- form ------------------------------->
 <fieldset>
-			<form:form modelAttribute="NewBoard" action="./addBoard?${_csrf.parameterName}=${_csrf.token}" class="form-horizontal" method="post">
-
-
 				
-			<form:input path="bwriter" type="hidden" value="admin" class="form-control" />	
 				
             
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">제목</label>
-               <form:input path="btitle" class="form-control" />
+                 ${notice.ntitle}
               </div>
               <div class="form-group">
-                <label for="inputDescription">내용</label>
-                <form:textarea path="bcontent" class="form-control" rows="10"/>
+                <label for="inputDescription">작성자</label>
+                 ${notice.nwriter}
               </div>
               <div class="form-group">
                 <label for="inputStatus">유형</label>
-                <form:select path="bcate" class="form-control custom-select">
-                  <option selected disabled>선택하세요</option>
-                  <option>버그처리</option>
-                  <option>신규기능</option>
-                  <option>기타</option>
-                </form:select>
+                 ${notice.ncate}
               </div>
+              <div class="form-group">
+                <label for="inputStatus">날짜</label>
+                 ${notice.ndate}
+              </div>
+              <div class="form-group">
+                <label for="inputDescription">내용</label>
+                 ${notice.ncontent}
+              </div>
+
             </div>
             
             
             <div class="row" style="padding-bottom: 30px; padding-left: 30px;">
-          <a href="#" class="btn btn-secondary">취소</a>
-          <input style="margin-left: 10px;" type="submit" value="등록" class="btn btn-success float-right">
+          <a onclick="history.back()" class="btn btn-secondary">이전으로</a>
         </div>
-			</form:form>
 			</fieldset>
 		
 					

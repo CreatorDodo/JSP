@@ -1,6 +1,7 @@
 package com.glory.member;
 
 import java.util.List;
+import java.util.Map;
 
 public interface MemberService {
 	
@@ -10,4 +11,6 @@ public interface MemberService {
 
 	Member getMemberById(String mid);
 
+	void updateAuth(Map<String, Object> auth);
+	
 }

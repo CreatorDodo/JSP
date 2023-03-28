@@ -57,6 +57,11 @@ public class BoardController {
 		return "boards/list";
 	}
 	
+	@PostMapping("/list")
+	public void UpdateStatus(@RequestParam Map<String, Object> status) {
+		boardService.updateStatus(status);
+	}
+	
 	@GetMapping("/detail")
 	public String requestBoardById(@RequestParam("id") String bid, Model model) {
 		

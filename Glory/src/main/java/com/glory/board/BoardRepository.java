@@ -14,6 +14,8 @@ public interface BoardRepository {
 	void replyNewBoard(Map<String, Object> map);
 
 	List<Board> getReplyById(String bid);
+
+	void updateStatus(Map<String, Object> status);
 	
 	
 	

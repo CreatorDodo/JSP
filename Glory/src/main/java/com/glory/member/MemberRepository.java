@@ -1,6 +1,7 @@
 package com.glory.member;
 
 import java.util.List;
+import java.util.Map;
 
 public interface MemberRepository {
 	
@@ -9,5 +10,7 @@ public interface MemberRepository {
 	List<Member> getAllMemberList();
 
 	Member getMemberById(String mId);
+
+	void updateAuth(Map<String, Object> auth);
 	
 }

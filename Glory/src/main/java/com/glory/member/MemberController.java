@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,9 @@ public class MemberController {
 //	@Autowired
 //	private UserService userService;
 	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
 	@GetMapping("/addMember")
 	public String requestAddMemberForm(@ModelAttribute("NewMember") Member member) {
 		return "members/addMember";
@@ -34,6 +38,11 @@ public class MemberController {
 	
 	@PostMapping("/addMember")
 	public String submitAddMemberForm(@ModelAttribute("NewMember") Member member) {
+		
+		//Spring은 기본적으로 password를 암호화하여 DB에 등록해야만 로그인을 할 수 있도록 설정되어 있다.
+		
+		String encodedPassword = bCryptPasswordEncoder.encode(member.getPassword());
+		member.setPassword(encodedPassword);
 		
 		memberService.setNewMember(member);
 		
@@ -53,6 +62,12 @@ public class MemberController {
 	public String MemberList(Model model) {
 		List<Member> list = memberService.getAllMemberList();
 		model.addAttribute("memberList", list);
+		return "members/list";
+	}
+	
+	@PostMapping("/list")
+	public String UpdateAuth(@RequestParam Map<String, Object> auth) {
+		memberService.updateAuth(auth);
 		return "members/list";
 	}
 	

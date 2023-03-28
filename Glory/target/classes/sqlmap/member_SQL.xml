@@ -21,5 +21,11 @@
 		SELECT * FROM glorymember ORDER BY mid DESC
 		]]>
 	</select>
+	
+	<update id="update_Auth" parameterType="HashMap">
+
+	UPDATE glorymember SET authority=#{authority} WHERE mid = #{mid}
+	
+	</update>
 
 </mapper>

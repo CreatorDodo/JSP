@@ -1,6 +1,7 @@
 package com.glory.member;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,12 @@ public class MemberRepositoryImpl implements MemberRepository {
 	@Override
 	public Member getMemberById(String mId) {
 		return this.sqlSessionTemplate.selectOne("member.select_detail", mId);
+	}
+
+	@Override
+	public void updateAuth(Map<String, Object> auth) {
+		this.sqlSessionTemplate.update("member.update_Auth", auth);
+		
 	}
 
 }

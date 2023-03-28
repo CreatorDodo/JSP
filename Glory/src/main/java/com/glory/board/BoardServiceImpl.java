@@ -40,6 +40,12 @@ public class BoardServiceImpl implements BoardService{
 	public List<Board> getReplyById(String bid) {
 		return boardRepository.getReplyById(bid);
 	}
+
+	@Override
+	public void updateStatus(Map<String, Object> status) {
+		boardRepository.updateStatus(status);
+		
+	}
 	
 	
 	

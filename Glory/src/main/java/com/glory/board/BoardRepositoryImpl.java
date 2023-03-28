@@ -39,6 +39,12 @@ public class BoardRepositoryImpl implements BoardRepository {
 		return this.sqlSessionTemplate.selectList("board.select_reply", bid);
 	}
 
+	@Override
+	public void updateStatus(Map<String, Object> status) {
+		this.sqlSessionTemplate.update("board.update_Status", status);
+		
+	}
+
 
 	
 	

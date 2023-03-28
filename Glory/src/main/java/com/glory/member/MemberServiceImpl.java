@@ -1,6 +1,7 @@
 package com.glory.member;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,12 @@ public class MemberServiceImpl implements MemberService {
 		Member memberById = memberRepository.getMemberById(mid);
 		
 		return memberById;
+	}
+
+	@Override
+	public void updateAuth(Map<String, Object> auth) {
+		memberRepository.updateAuth(auth);
+		
 	}
 
 }
