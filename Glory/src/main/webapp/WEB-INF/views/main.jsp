@@ -109,6 +109,7 @@ Brad Diesel
 </div>
 </div>
 
+
 </a>
 <div class="dropdown-divider"></div>
 <a href="#" class="dropdown-item">
@@ -194,8 +195,6 @@ Nora Silvester
 <div class="col-sm-6">
 <ol class="breadcrumb float-sm-right">
 <li class="breadcrumb-item"><a href="#">Home</a></li>
-<li class="breadcrumb-item"><a href="#">Layout</a></li>
-<li class="breadcrumb-item active">Top Navigation</li>
 </ol>
 </div>
 </div>
@@ -206,16 +205,16 @@ Nora Silvester
 <div class="content">
 <div class="container">
 <div class="row">
+
+<!------------------------- 게시판 ------------------------------->
+
 <div class="col-lg-6">
 <div class="card">
-<div class="card-body">
-<!-- <h5 class="card-title">글 목록</h5>
-
-</div>
-</div>
 <div class="card card-primary card-outline">
+<div class="card-header">
+<h5 class="card-title m-0">게시판</h5>
+</div>
 <div class="card-body">
-<!-- <h5 class="card-title">글 목록</h5> -->
 
 
 
@@ -227,17 +226,17 @@ Nora Silvester
 <th>분류</th>
 <th>제목</th>
 <th>상태</th>
-
+<th></th>
 </tr>
 </thead>
 <tbody>
 <c:forEach items="${boardList}" var="board">
 <tr>
-<td><a href="./detail?id=${board.bid}">${board.bid}</a></td>
+<td>${board.bid}</td>
 <td>${board.bcate}</td>
 <td>${board.btitle}</td>
 <td>${board.bstatus}</td>
-
+<td><a href="javascript:detailBoard('${board.bid}', '${board.btitle}', '${board.bcontent}')" class="btn-success btn-sm">상세보기</a></td>
 </tr>
 
 
@@ -259,43 +258,98 @@ Nora Silvester
 
 
 
-
-
-
-
-
-<!-- <p class="card-text"> -->
-<!-- Some quick example text to build on the card title and make up the bulk of the card's -->
-<!-- content. -->
-<!-- </p> -->
-<!-- <a href="#" class="card-link">Card link</a> -->
-<!-- <a href="#" class="card-link">Another link</a> -->
+</div>
 </div>
 </div>
 </div>
 
+<!------------------------- 게시판 END ------------------------------->
+
+		
+<!------------------------- 게시물 상세보기 ------------------------------->
 <div class="col-lg-6">
+
 <div class="card">
+<div class="card card-primary card-outline">
 <div class="card-header">
-<h5 class="card-title m-0">Featured</h5>
+
+<h5 class="card-title m-0">게시물 상세보기</h5>
 </div>
 <div class="card-body">
-<h6 class="card-title">Special title treatment</h6>
-<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-<a href="#" class="btn btn-primary">Go somewhere</a>
+<h3 class="card-title" id="btitle">Title</h3>
+<br>
+<p class="card-text" id="bcontent">Content</p>
+
+<div class="input-group input-group-sm">
+<input type="text" id="reply" class="form-control">
+<input type="hidden" id="bid" class="form-control">
+<span class="input-group-append">
+
+
+<button type="button" onclick="javascript:addReply()" class="btn btn-primary btn-flat">댓글 등록</button>
+</span>
+</div>
+</div>
 </div>
 </div>
 <div class="card card-primary card-outline">
 <div class="card-header">
-<h5 class="card-title m-0">Featured</h5>
+<h5 class="card-title m-0">댓글</h5>
 </div>
 <div class="card-body">
-<h6 class="card-title">Special title treatment</h6>
-<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-<a href="#" class="btn btn-primary">Go somewhere</a>
+<p class="card-text replies" id="replies">내용</p>
 </div>
 </div>
 </div>
+
+<!------------------------- 게시물 상세보기 END ------------------------------->
+
+
+
+<!------------------------- 게시판 등록 ------------------------------->
+
+<div class="col-lg-6">
+
+<div class="card">
+<div class="card card-primary card-outline">
+<div class="card-header">
+
+<h5 class="card-title m-0">게시판 등록</h5>
+</div>
+<div class="card-body">				
+
+
+<div class="col-sm">
+
+<div class="form-group">
+<label>제목</label>
+<input id="smalltitle" class="form-control" placeholder="Title" />
+</div>
+<div class="form-group">
+<label>내용</label>
+<textarea id="smallcontent" class="form-control" rows="3" placeholder="Content"></textarea>
+</div>
+<div class="form-group">
+  <label for="inputStatus">유형</label>
+  <select id="smallcate" class="form-control custom-select">
+    <option selected>선택하세요</option>
+    <option>버그처리</option>
+    <option>신규기능</option>
+    <option>기타</option>
+  </select>
+</div>
+</div>
+<input id="smallwriter" type="hidden" value="admin" class="form-control">	
+<input style="margin-left: 10px;" type="button" onclick="javascript:addBoard()" value="등록" class="btn btn-success float-right">
+
+
+</div>
+</div>
+</div>
+</div>
+
+<!------------------------- 게시판 등록 END ------------------------------->
+
 
 </div>
 
@@ -376,6 +430,107 @@ Anything you want
 				"responsive" : true,
 			});
 		});
+		
+		function addBoard() {
+			btitle = $("#smalltitle").val();
+			bcontent = $("#smallcontent").val();
+			bwriter = $("#smallwriter").val();
+			bcate = $("#smallcate").val();
+			
+			$.ajax({
+				type:"POST",
+				url:"/addBoard",
+				data:{
+					btitle : btitle,
+					bcontent : bcontent,
+					bwriter : bwriter,
+					bcate : bcate
+				},
+				beforeSend : function(xhr)
+		        {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다. */
+		            xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+		        },
+				success:function(result) {
+					alert("등록 성공")
+					window.location.reload();
+				},
+				error:function(request,status,error) {
+					alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+				}
+				
+			})
+			
+
+		}
+		
+		function detailBoard(bid, btitle, bcontent) {
+			document.getElementById('btitle').innerHTML = btitle;
+			document.getElementById('bcontent').innerHTML = bcontent;
+			document.getElementById('bid').value = bid;
+			$.ajax({
+				type:"POST",
+				url:"/ajaxDetail",
+				data:{
+					bid : bid
+				},
+				/*Jackson Driver 의존성을 추가하여야 한다. */
+				dataType:"JSON",
+				beforeSend : function(xhr)
+		        {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다. */
+		            xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+		        },
+				success:function(result) {
+					var str = "";
+					for(var i in result){
+						str+='				<li class="list-group-item">'
+						str+='					<div class="list-group-item list-group-item-secondary small">'
+						str+='						<span>' + result[i].bcontent +  '</span>'
+						str+='						<span class="small float-end">' + result[i].bwriter + '</span>'
+						str+='					</div>'
+						str+='					<div class="list-group-item">' + result[i].bdate + '</div>'
+						str+='				</li>'
+					}
+					$(".replies").html(str);
+					document.getElementById('replies').innerHTML=str;	
+				},
+				error:function(request,status,error) {
+					alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+				}
+				
+			})
+			
+
+		}
+		
+		function addReply() {
+			reply = $("#reply").val();
+			bid = $("#bid").val();
+			
+			$.ajax({
+				type:"POST",
+				url:"/addReply",
+				data:{
+					bid : bid,
+					bwriter : "비회원",
+					bcontent : reply,
+				},
+				beforeSend : function(xhr)
+		        {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다. */
+		            xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+		        },
+				success:function(result) {
+					alert("등록 성공")
+					window.location.reload();
+				},
+				error:function(request,status,error) {
+					alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+				}
+				
+			})
+
+
+		}
+		
 	</script>
 
 </body>
