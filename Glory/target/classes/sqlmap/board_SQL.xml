@@ -36,6 +36,12 @@
 	]]>
 </select>
 
+<select id="select_chat" resultType="com.glory.board.Board">
+<![CDATA[
+	SELECT * FROM gloryboard WHERE bpid = 0 ORDER BY bid ASC
+	]]>
+</select>
+
 <update id="update_Status" parameterType="HashMap">
 
 UPDATE gloryboard SET bstatus=#{bstatus} WHERE bid = #{bid}

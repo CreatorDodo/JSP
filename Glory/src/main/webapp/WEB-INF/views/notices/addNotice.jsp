@@ -58,7 +58,7 @@
 									</div>
 									<div class="form-group">
 										<label for="inputDescription">내용</label>
-										<form:textarea path="ncontent" class="form-control" rows="10" />
+										<form:textarea path="ncontent" id="summernote" class="form-control" rows="10" />
 									</div>
 									<div class="form-group">
 										<label for="inputStatus">유형</label>
@@ -91,4 +91,23 @@
 
 	<%@ include file="../footer.jsp"%>
 </body>
+
+     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+   <script>
+      $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 5,
+        height: 300,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+    </script>
 </html>

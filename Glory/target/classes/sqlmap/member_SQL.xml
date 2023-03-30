@@ -15,6 +15,12 @@
 		SELECT * FROM glorymember WHERE mid = #{mid}
 		]]>
 	</select>
+	
+	<select id="select_email" parameterType="String" resultType="com.glory.member.Member">
+	<![CDATA[
+		SELECT * FROM glorymember WHERE username = #{username}
+		]]>
+	</select>
 
 	<select id="select_list" resultType="com.glory.member.Member">
 	<![CDATA[

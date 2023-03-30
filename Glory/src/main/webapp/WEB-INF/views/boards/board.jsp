@@ -110,7 +110,7 @@
 	<!-- 댓글 등록 -->
 	<sec:authentication property="principal" var="user"/>
 <input id="boardWriter" type="hidden" value="${board.bwriter}" />
-<input id="bwriter" type="hidden" value="${member.username}" />
+<input id="bwriter" type="hidden" value="${user.username}" />
 <input id="bid" type="hidden" name="bid" value="${board.bid}" >
 <textarea name="bcontent" id="bcontent" rows="5" class="form-control"></textarea>
 <input type="button" class="btn btn-primary my-2" onclick="replyNewFunction()" value="댓글 등록">
@@ -118,7 +118,7 @@
   </div>
 </div>
 <!-- 댓글 -->
-					
+				
 <!------------------------- form end ------------------------------->
 				</div>
 			</div>

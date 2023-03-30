@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,19 +15,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.glory.mail.MailService;
+import com.glory.main.Todo;
+import com.glory.member.Member;
+import com.glory.member.MemberService;
+
 
 @Controller
 @RequestMapping("/boards")
 public class BoardController {
 	
-//	@Autowired
-//	private MailService mailService;
+	@Autowired
+	private MailService mailService;
+	
+	@Autowired
+	private SqlSessionTemplate sqlSessionTemplate;
 	
 	@Autowired		// DI
 	private BoardService boardService;
-	
-//	@Autowired
-//	private UserService userService;
 	
 	@GetMapping("/addBoard")
 	public String requestAddBoardForm(@ModelAttribute("NewBoard") Board board) {
@@ -37,14 +43,13 @@ public class BoardController {
 	public String submitAddBoardForm(@ModelAttribute("NewBoard") Board board) {
 		
 		boardService.setNewBoard(board);
+		Member member = this.sqlSessionTemplate.selectOne("member.select_email", board.getBwriter());
 		
-//		User user = userService.existUsername(board.getBwriter());
+		String to = member.getMemail();
+		String subject = board.getBwriter() + "님의 게시물이 등록되었습니다.";
+		String body = board.getBcontent();
 		
-//		String to = user.getUemail();
-//		String subject = board.getBwriter() + "님의 게시물이 등록되었습니다.";
-//		String body = board.getBcontent();
-		
-//		mailService.sendMail(to, subject, body);
+		mailService.sendMail(to, subject, body);
 		
 
 		return "redirect:/boards/list";
@@ -92,15 +97,15 @@ public class BoardController {
 		
 		boardService.replyNewBoard(map);
 		
-//		String boardWriter = (String) map.get("boardWriter");
+		String boardWriter = (String) map.get("boardWriter");
 		
-//		User user = userService.existUsername(boardWriter);
+		Member member = this.sqlSessionTemplate.selectOne("member.select_email", boardWriter);
 		
-//		String to = user.getUemail();
-//		String subject = (String) map.get("bwriter") + "님이 댓글을 등록하였습니다.";
-//		String body = (String) map.get("bcontent");
+		String to = member.getMemail();
+		String subject = (String) map.get("bwriter") + "님이 댓글을 등록하였습니다.";
+		String body = (String) map.get("bcontent");
 		
-//		mailService.sendMail(to, subject, body);
+		mailService.sendMail(to, subject, body);
 
 	}
 	

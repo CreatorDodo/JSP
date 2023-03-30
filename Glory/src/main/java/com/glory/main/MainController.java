@@ -43,7 +43,8 @@ public class MainController {
 	
 	
 	@PostMapping("/ajaxDetail")
-	public @ResponseBody List<Board> requestReplyByIdAjax(@RequestParam("bid") String bid, @ModelAttribute Board board) {
+	public @ResponseBody List<Board> requestReplyByIdAjax(@RequestParam("bid") String bid, @ModelAttribute Board board, Model model) {
+		
 		
 		List<Board> list = boardService.getReplyById(bid);
 		
@@ -88,8 +89,11 @@ public class MainController {
 		
 		//정상적으로 작동은 하지만 Service, Repository와 같은 일련의 관습은 지키는 것이 좋다.
 		List<Todo> todoList = this.sqlSessionTemplate.selectList("todo.select_list");
+		List<Board> chatList = this.sqlSessionTemplate.selectList("board.select_chat");
+		
 		
 		model.addAttribute("todoList", todoList);
+		model.addAttribute("chatList", chatList);
 		
 		return "admin";
 	}

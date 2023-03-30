@@ -1,9 +1,12 @@
+<%@page import="org.springframework.web.bind.annotation.ModelAttribute"%>
+<%@page import="com.glory.board.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -236,10 +239,8 @@ Nora Silvester
 <td>${board.bcate}</td>
 <td>${board.btitle}</td>
 <td>${board.bstatus}</td>
-<td><a href="javascript:detailBoard('${board.bid}', '${board.btitle}', '${board.bcontent}')" class="btn-success btn-sm">상세보기</a></td>
+<td><a href='javascript:detailBoard("${board.bid}", "${board.btitle}", "${fn:replace(board.bcontent, '"', '\\"')}" )' class="btn-success btn-sm">상세보기</a></td>
 </tr>
-
-
 </c:forEach>
 
 
@@ -467,6 +468,7 @@ Anything you want
 			document.getElementById('btitle').innerHTML = btitle;
 			document.getElementById('bcontent').innerHTML = bcontent;
 			document.getElementById('bid').value = bid;
+			
 			$.ajax({
 				type:"POST",
 				url:"/ajaxDetail",
@@ -491,7 +493,7 @@ Anything you want
 						str+='				</li>'
 					}
 					$(".replies").html(str);
-					document.getElementById('replies').innerHTML=str;	
+					document.getElementById('replies').innerHTML=str;
 				},
 				error:function(request,status,error) {
 					alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
@@ -534,4 +536,23 @@ Anything you want
 	</script>
 
 </body>
+
+     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+   <script>
+      $('#smallcontent').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 5,
+        height: 100,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+    </script>
 </html>
