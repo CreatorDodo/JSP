@@ -16,12 +16,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.glory.board.Board;
 import com.glory.board.BoardService;
+import com.glory.notice.Notice;
+import com.glory.notice.NoticeService;
 
 @Controller
 public class MainController {
 		
 	@Autowired		// DI
 	private BoardService boardService;
+	
+	@Autowired		// DI
+	private NoticeService noticeService;
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
@@ -99,6 +104,18 @@ public class MainController {
 	}
 	
 	@ResponseBody
+	@PostMapping("/editBoard")
+	public void editBoard(@RequestParam Map<String, Object> board) {
+		this.sqlSessionTemplate.update("board.update_Board", board);
+	}
+	
+	@ResponseBody
+	@PostMapping("/deleteBoard")
+	public void deleteBoard(@RequestParam String bid) {
+		this.sqlSessionTemplate.delete("board.delete_Board", bid);
+	}
+	
+	@ResponseBody
 	@PostMapping("/addBoard")
 	public void addBoard(@RequestParam Map<String, Object> board) {
 		Board boards = new Board();
@@ -109,6 +126,19 @@ public class MainController {
 		
 		
 		boardService.setNewBoard(boards);
+	}
+	
+	@ResponseBody
+	@PostMapping("/addNotice")
+	public void addNotice(@RequestParam Map<String, Object> notice) {
+		Notice notices = new Notice();
+		notices.setNtitle((String)notice.get("ntitle"));
+		notices.setNwriter((String)notice.get("nwriter"));
+		notices.setNcate((String)notice.get("ncate"));
+		notices.setNcontent((String)notice.get("ncontent"));
+		
+		
+		noticeService.setNewNotice(notices);
 	}
 	
 	@ResponseBody

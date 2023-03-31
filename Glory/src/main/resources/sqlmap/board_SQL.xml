@@ -44,26 +44,20 @@
 
 <update id="update_Status" parameterType="HashMap">
 
-UPDATE gloryboard SET bstatus=#{bstatus} WHERE bid = #{bid}
+	UPDATE gloryboard SET bstatus=#{bstatus} WHERE bid = #{bid}
 
 </update>
 
-<!-- <update id="update_view" parameterType="hashMap"> -->
-<!-- <![CDATA[ -->
-<!-- UPDATE board SET bview = bview + 1 WHERE bid = #{bid} -->
-<!-- 	]]> -->
-<!-- </update> -->
+<update id="update_Board" parameterType="HashMap">
 
-<!-- <update id="update_like" parameterType="hashMap"> -->
-<!-- <![CDATA[ -->
-<!-- UPDATE board SET blike = blike + 1 WHERE bid = #{bid} -->
-<!-- 	]]> -->
-<!-- </update> -->
+	UPDATE gloryboard SET btitle=#{btitle}, bcontent=#{bcontent}, bcate=IF(#{bcate} = '선택하세요', bcate, #{bcate}), bwriter=#{bwriter} WHERE bid = #{bid}
 
-<!-- <update id="update_hate" parameterType="hashMap"> -->
-<!-- <![CDATA[ -->
-<!-- UPDATE board SET bhate = bhate + 1 WHERE bid = #{bid} -->
-<!-- 	]]> -->
-<!-- </update> -->
+</update>
+
+<delete id="delete_Board" parameterType="String">
+
+	DELETE FROM gloryboard WHERE bid = #{bid}
+
+</delete>
 
 </mapper>

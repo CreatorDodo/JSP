@@ -73,6 +73,9 @@
 								<li><a class="dropdown-item" href="/cars/product">제품관리</a></li>
 							</ul>
 						</li>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-primary" style="margin-left: 10px;">
+						공지등록
+					</button>
 					</sec:authorize>
 
 
@@ -209,6 +212,105 @@ Nora Silvester
 <div class="container">
 <div class="row">
 
+
+<!------------------------- Modal ------------------------------->
+
+<div class="modal fade" id="modal-primary">
+<div class="modal-dialog">
+<div class="modal-content bg-light">
+<div class="modal-header bg-primary">
+<h4 class="modal-title">공지사항 등록</h4>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+<div class="col-sm">
+
+<div class="form-group">
+<label>제목</label>
+<input id="ntitle" class="form-control" placeholder="Title" />
+</div>
+<div class="form-group">
+<label>내용</label>
+<textarea id="ncontent" class="form-control" rows="3" placeholder="Content"></textarea>
+</div>
+<div class="form-group">
+  <label for="inputStatus">유형</label>
+  <select id="ncate" class="form-control custom-select">
+    <option selected>선택하세요</option>
+    <option>버그처리</option>
+    <option>신규기능</option>
+    <option>기타</option>
+  </select>
+</div>
+</div>
+</div>
+
+<input id="nwriter" type="hidden" value="admin" class="form-control">	
+
+<div class="modal-footer justify-content-between">
+<button type="button" class="btn btn-outline-light btn-secondary" data-dismiss="modal">닫기</button>
+<button type="button"onclick="javascript:addNotice()" class="btn btn-outline-light btn-primary">등록</button>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+<!------------------------- Modal END ------------------------------->
+
+<!------------------------- Modal2 ------------------------------->
+
+<div class="modal fade" id="modal-success">
+<div class="modal-dialog">
+<div class="modal-content bg-light">
+<div class="modal-header bg-success">
+<h4 class="modal-title">글 수정</h4>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+<div class="col-sm">
+
+<div class="form-group">
+<label>제목</label>
+<input id="btitle2" class="form-control" placeholder="Title" />
+</div>
+<div class="form-group">
+<label>내용</label>
+<textarea id="bcontent2" class="form-control" rows="3" placeholder="Content"></textarea>
+</div>
+<div class="form-group">
+  <label for="inputStatus">유형</label>
+  <select id="bcate2" class="form-control custom-select">
+    <option selected>선택하세요</option>
+    <option>버그처리</option>
+    <option>신규기능</option>
+    <option>기타</option>
+  </select>
+</div>
+</div>
+</div>
+
+<input id="bwriter2" type="hidden" value="admin" class="form-control">	
+
+<div class="modal-footer justify-content-between">
+<button type="button" class="btn btn-outline-light btn-secondary" data-dismiss="modal">닫기</button>
+<button type="button"onclick="javascript:editBoard()" class="btn btn-outline-light btn-success">수정</button>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+<!------------------------- Modal2 END ------------------------------->
+
 <!------------------------- 게시판 ------------------------------->
 
 <div class="col-lg-6">
@@ -275,6 +377,16 @@ Nora Silvester
 <div class="card-header">
 
 <h5 class="card-title m-0">게시물 상세보기</h5>
+
+<button type="button" class="btn btn-danger btn-sm" onclick="deleteBoard()" style="margin-left: 10px; float: right;">
+	글 삭제
+</button>
+
+<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-success" style="margin-left: 10px; float: right;">
+	글 수정
+</button>
+<input id="bid2" type="hidden" class="form-control">	
+
 </div>
 <div class="card-body">
 <h3 class="card-title" id="btitle">Title</h3>
@@ -432,6 +544,67 @@ Anything you want
 			});
 		});
 		
+
+		function deleteBoard() {
+			bid = $("#bid2").val();
+			
+			$.ajax({
+				type:"POST",
+				url:"/deleteBoard",
+				data:{
+					bid : bid
+				},
+				beforeSend : function(xhr)
+		        {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다. */
+		            xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+		        },
+				success:function(result) {
+					alert("삭제 성공")
+					window.location.reload();
+				},
+				error:function(request,status,error) {
+					alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+				}
+				
+			})
+			
+
+		}
+		
+		function editBoard() {
+			bid = $("#bid2").val();
+			btitle = $("#btitle2").val();
+			bcontent = $("#bcontent2").val();
+			bwriter = $("#bwriter2").val();
+			bcate = $("#bcate2").val();
+			
+			$.ajax({
+				type:"POST",
+				url:"/editBoard",
+				data:{
+					bid : bid,
+					btitle : btitle,
+					bcontent : bcontent,
+					bwriter : bwriter,
+					bcate : bcate
+				},
+				beforeSend : function(xhr)
+		        {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다. */
+		            xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+		        },
+				success:function(result) {
+					alert("수정 성공")
+					window.location.reload();
+				},
+				error:function(request,status,error) {
+					alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+				}
+				
+			})
+			
+
+		}
+		
 		function addBoard() {
 			btitle = $("#smalltitle").val();
 			bcontent = $("#smallcontent").val();
@@ -464,11 +637,46 @@ Anything you want
 
 		}
 		
+		function addNotice() {
+			ntitle = $("#ntitle").val();
+			ncontent = $("#ncontent").val();
+			nwriter = $("#nwriter").val();
+			ncate = $("#ncate").val();
+			
+			$.ajax({
+				type:"POST",
+				url:"/addNotice",
+				data:{
+					ntitle : ntitle,
+					ncontent : ncontent,
+					nwriter : nwriter,
+					ncate : ncate
+				},
+				beforeSend : function(xhr)
+		        {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다. */
+		            xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+		        },
+				success:function(result) {
+					alert("등록 성공")
+					window.location.reload();
+				},
+				error:function(request,status,error) {
+					alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+				}
+				
+			})
+			
+
+		}
+		
 		function detailBoard(bid, btitle, bcontent) {
 			document.getElementById('btitle').innerHTML = btitle;
 			document.getElementById('bcontent').innerHTML = bcontent;
 			document.getElementById('bid').value = bid;
 			
+			document.getElementById('btitle2').value = btitle;
+			document.getElementById('bcontent2').innerHTML = bcontent;
+			document.getElementById('bid2').value = bid;
 			$.ajax({
 				type:"POST",
 				url:"/ajaxDetail",
@@ -541,7 +749,7 @@ Anything you want
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
    <script>
       $('#smallcontent').summernote({
-        placeholder: 'Hello stand alone ui',
+        placeholder: '게시판 등록',
         tabsize: 5,
         height: 100,
         toolbar: [
@@ -555,4 +763,22 @@ Anything you want
         ]
       });
     </script>
+    
+    <script>
+      $('#ncontent').summernote({
+        placeholder: '공지사항 등록',
+        tabsize: 5,
+        height: 100,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+    </script>
+    
 </html>
