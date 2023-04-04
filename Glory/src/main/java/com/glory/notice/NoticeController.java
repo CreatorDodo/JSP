@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/notice")
 public class NoticeController {
-
 	
 //	@Autowired
 //	private MailService mailService;
@@ -30,6 +29,11 @@ public class NoticeController {
 	@GetMapping("/addNotice")
 	public String requestAddNoticeForm(@ModelAttribute("NewNotice") Notice notice) {
 		return "notices/addNotice";
+	}
+	
+	@GetMapping("/chatGPT")
+	public String chatGPT(@ModelAttribute("NewNotice") Notice notice) {
+		return "notices/chatGPT";
 	}
 	
 	@PostMapping("/addNotice")

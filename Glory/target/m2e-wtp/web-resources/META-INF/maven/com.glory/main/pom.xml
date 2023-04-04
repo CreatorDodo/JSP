@@ -13,6 +13,12 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
+<!-- 	<repositories> -->
+<!--     <repository> -->
+<!--         <id>openai-repo</id> -->
+<!--         <url>https://api.ai.ovh.net/openai/repository</url> -->
+<!--     </repository> -->
+<!-- 	</repositories> -->
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -192,6 +198,39 @@
 		    <artifactId>javax.mail</artifactId>
 		    <version>1.6.2</version>
 		</dependency>
+		<!-- chatGPT -->
+<!-- https://mvnrepository.com/artifact/com.theokanning.openai-gpt3-java/client -->
+		<dependency>
+		    <groupId>com.theokanning.openai-gpt3-java</groupId>
+		    <artifactId>client</artifactId>
+		    <version>0.9.0</version>       
+		</dependency>
+		<dependency>
+		    <groupId>org.python</groupId>
+		    <artifactId>jython-standalone</artifactId>
+		    <version>2.7.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+		    <version>4.5.14</version>
+		</dependency>
+		<dependency>
+			 <groupId>com.googlecode.json-simple</groupId>
+			 <artifactId>json-simple</artifactId>
+			 <version>1.1.1</version>
+		</dependency>
+		<dependency>
+			  <groupId>org.json</groupId>
+			  <artifactId>json</artifactId>
+			  <version>20210307</version>
+		</dependency>
+		
+<!-- 	    <dependency> -->
+<!-- 	        <groupId>ai.openai</groupId> -->
+<!-- 	        <artifactId>openai-api</artifactId> -->
+<!-- 	        <version>1.0.0</version> -->
+<!-- 	    </dependency> -->
 	</dependencies>
     <build>
         <plugins>
